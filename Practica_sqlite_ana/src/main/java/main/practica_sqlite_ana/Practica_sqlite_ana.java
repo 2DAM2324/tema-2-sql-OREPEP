@@ -5,6 +5,9 @@
 package main.practica_sqlite_ana;
 
 import Controlador.Controlador;
+import Ventana.Ventana1;
+import java.io.IOException;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -13,6 +16,16 @@ import Controlador.Controlador;
 public class Practica_sqlite_ana {
 
     public static void main(String[] args) {
-        Controlador controlador = new Controlador();
+        Ventana1 ventana = null;
+        try{
+            ventana = new Ventana1();
+            ventana.setVisible(true);
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }catch(ClassNotFoundException ex){
+            ex.printStackTrace();
+        }catch(SAXException ex){
+            ex.printStackTrace();
+        }
     }
 }

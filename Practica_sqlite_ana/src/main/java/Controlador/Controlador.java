@@ -4,6 +4,9 @@
  */
 package Controlador;
 import Modelo.Conexion;
+import Modelo.ConexionUsuario;
+import Modelo.Usuario;
+import java.util.ArrayList;
 
 /**
  *
@@ -11,9 +14,27 @@ import Modelo.Conexion;
  */
 public class Controlador {
     Conexion conexion;
-
+    ConexionUsuario conexionUsuario;
+    
     public Controlador() {
         conexion = new Conexion();
+        conexion.getConexion();
+        conexionUsuario = new ConexionUsuario();
     }
-   
+    public void CerrarConexion(){
+        conexion.cerrarConexion();
+    }
+    
+    public ArrayList<Usuario> GetUsuarios(){
+        ArrayList<Usuario> listaUsuarios = conexionUsuario.obtenerTodosUsuarios();
+        return listaUsuarios;
+    }
+    
+    public void EliminarUsuarioPorId(String Id){
+        conexionUsuario.eliminarUsuarioPorId(Id);
+    }
+    
+    public void Crearcliente(){
+        
+    }
 }
