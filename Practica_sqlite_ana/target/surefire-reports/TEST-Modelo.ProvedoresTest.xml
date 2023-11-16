@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="Modelo.UsuarioTest" time="0.019" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="Modelo.ProvedoresTest" time="0.087" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -59,17 +59,18 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="testEliminarUsuario" classname="Modelo.UsuarioTest" time="0.005">
-    <system-out><![CDATA[Usuario insertado correctamente.
-Usuario eliminado correctamente.25378501A
+  <testcase name="ModificarProvedor" classname="Modelo.ProvedoresTest" time="0.008">
+    <system-out><![CDATA[Conexión exitosa a la base de datos SQLite.
+Provedor insertado correctamente.
+No se encontró ningún Provedor con el Id proporcionado.
 ]]></system-out>
   </testcase>
-  <testcase name="testCrearUsuario" classname="Modelo.UsuarioTest" time="0.004">
-    <system-out><![CDATA[Usuario insertado correctamente.
+  <testcase name="testCrearProvedor" classname="Modelo.ProvedoresTest" time="0.003">
+    <system-out><![CDATA[Provedor insertado correctamente.
 ]]></system-out>
   </testcase>
-  <testcase name="ModificarUsuario" classname="Modelo.UsuarioTest" time="0.003">
-    <system-out><![CDATA[Usuario modificado correctamente.13425894P
+  <testcase name="testEliminarProvedor" classname="Modelo.ProvedoresTest" time="0.004">
+    <system-out><![CDATA[Provedor eliminado correctamente.87320102P
 ]]></system-out>
   </testcase>
 </testsuite>

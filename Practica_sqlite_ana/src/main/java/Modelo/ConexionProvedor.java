@@ -115,7 +115,7 @@ public class ConexionProvedor extends Conexion{
         }
     }
     
-    public void ModificarCliente(String Id2) {
+    public void ModificarProvedor(String Id , String id2) {
         String query = "UPDATE Proveedor SET Id = ? WHERE Id = ?";
 
         try {
@@ -123,14 +123,14 @@ public class ConexionProvedor extends Conexion{
             PreparedStatement statement = connection.prepareStatement(query);
 
             // Establece los parámetros en la consulta
-            statement.setString(1, Id2);
-            statement.setString(2, Id2);
+            statement.setString(1, id2);
+            statement.setString(2, Id);
 
             // Ejecuta la actualización
             int rowsUpdated = statement.executeUpdate();
 
             if (rowsUpdated > 0) {
-                System.out.println("Provedor modificado correctamente." + Id2);
+                System.out.println("Provedor modificado correctamente." + id2);
             } else {
                 System.out.println("No se encontró ningún Provedor con el Id proporcionado.");
             }

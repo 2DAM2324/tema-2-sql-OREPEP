@@ -90,6 +90,16 @@ public class Controlador {
         }
     }
     
+    public void ModificarProvedor(String id, String id2){
+        boolean crearProvedorValido = validarDNI(id2);
+        
+        if(crearProvedorValido){
+            conexionProvedor.ModificarProvedor(id , id2);
+        }else{
+            System.out.println("Error al Modificar Provedor, campos inválidos");
+        }
+    }
+    
     private boolean ComprobarCamposCliente(Usuario usuario) {
         return validarDNI(usuario.getDni()) &&
                validarNombre(usuario.getNombre()) &&

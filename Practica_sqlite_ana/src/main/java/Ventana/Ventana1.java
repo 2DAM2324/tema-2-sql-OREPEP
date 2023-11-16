@@ -1449,7 +1449,7 @@ public class Ventana1 extends javax.swing.JFrame {
 
     private void AñadirProvedorAbaseDeDatos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirProvedorAbaseDeDatos
         TextoProvedor1(evt);
-        //controlador.CrearProvedor(Idprovedor1);
+        controlador.CrearProvedor(Idprovedor1);
         MostrarProvedoresEnTabla();
     }//GEN-LAST:event_AñadirProvedorAbaseDeDatos
 
@@ -1458,14 +1458,14 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_TextoProvedor1
 
     private void jButton_eliminar_provedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminar_provedorActionPerformed
-        /*filaSeleccionadaTablaProvedores = jTable_provedor.getSelectedRow();
+        filaSeleccionadaTablaProvedores = jTable_provedor.getSelectedRow();
 
         if (filaSeleccionadaTablaProvedores != -1) {
             Object dniObj = jTable_provedor.getValueAt(filaSeleccionadaTablaProvedores, jTable_provedor.getColumn("Provedor").getModelIndex());
             String idProvedor = dniObj.toString();
-            controlador.EliminarProvedor(idProvedor);
+            controlador.EliminarProvedorPorId(idProvedor);
         }
-        MostrarProvedoresEnTabla();*/
+        MostrarProvedoresEnTabla();
     }//GEN-LAST:event_jButton_eliminar_provedorActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -1473,25 +1473,30 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void Modificara_provedor_en_tabla(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Modificara_provedor_en_tabla
-        /*filaSeleccionadaTablaProvedores = jTable_provedor.getSelectedRow();
+        filaSeleccionadaTablaProvedores = jTable_provedor.getSelectedRow();
         String idProvedor2 = null;
         if (filaSeleccionadaTablaProvedores != -1) {
             Object proObj = jTable_provedor.getValueAt(filaSeleccionadaTablaProvedores, jTable_provedor.getColumn("Provedor").getModelIndex());
             idProvedor2 = proObj.toString();
-        }
-        ArrayList<Provedores> listaProvedores;
-        //listaProvedores = controlador.GetProvedoresEnTabla();
+            
+            ArrayList<Provedores> listaProvedores;
+            listaProvedores = controlador.GetProvedores();
 
-        for(Provedores u : listaProvedores){
-            if (idProvedor2 != null && idProvedor2.equals(u.getCodProvedor())){
-                jTextField_provedorTabla.setText(u.getCodProvedor());
+            for(Provedores u : listaProvedores){
+                if (idProvedor2 != null && idProvedor2.equals(u.getCodProvedor())){
+                    jTextField_provedorTabla.setText(u.getCodProvedor());
+                }
             }
-        }*/
+            
+            IdProvedorAModificar = idProvedor2;
+        }
+        
+        
     }//GEN-LAST:event_Modificara_provedor_en_tabla
 
     private void Guardar_provedor_en_tabla(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar_provedor_en_tabla
-        jButton_eliminar_provedorActionPerformed(evt);
-        AñadirProvedorAbaseDeDatos(evt);
+        TextoProvedor1(evt);
+        controlador.ModificarProvedor(IdProvedorAModificar  , Idprovedor1);
     }//GEN-LAST:event_Guardar_provedor_en_tabla
 
     private void CancelarPrestamo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarPrestamo
@@ -1769,7 +1774,7 @@ public class Ventana1 extends javax.swing.JFrame {
     private DefaultTableModel TablaClientes;
     private DefaultTableModel modeloUsuarioDetalles;
     private int filaSeleccionada = -1;
-    String dniAeliminar;
+    String dniAeliminar = "";
     String dniAModificar = "";
     
     //variables pestaña libro
@@ -1792,6 +1797,7 @@ public class Ventana1 extends javax.swing.JFrame {
     String Idprovedor1 = null ;
     private DefaultTableModel modeloProvedor;
     private int filaSeleccionadaTablaProvedores = -1;
+    String IdProvedorAModificar = "";
     
     //variable de prestamo
     String materialBibliografico = null;
