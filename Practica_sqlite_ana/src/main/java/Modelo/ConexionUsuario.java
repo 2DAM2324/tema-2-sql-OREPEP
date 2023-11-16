@@ -26,12 +26,12 @@ public class ConexionUsuario extends Conexion{
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                String nombre = resultSet.getString("nombre_usuario");
-                String apellidos = resultSet.getString("apellidos_usuario");
-                String login = resultSet.getString("login_usuario");
-                String password = resultSet.getString("password_usuario");
+                String Dni = resultSet.getString("Dni");
+                String nombre = resultSet.getString("nombre");
+                String telefono = resultSet.getString("telefono");
+                String edad = resultSet.getString("edad");
 
-                Usuario usuario = new Usuario(nombre, apellidos, login, password);
+                Usuario usuario = new Usuario(Dni, nombre, telefono, edad);
                 usuarios.add(usuario);
             }
 
@@ -46,20 +46,54 @@ public class ConexionUsuario extends Conexion{
         return usuarios;
     }
     
-    public void eliminarUsuarioPorId(String login) {
-        String query = "DELETE FROM Usuarios WHERE login_usuario = ?";
+    public Usuario obtenerUsuarioPorDni(String dni2) {
+        Usuario usuario = null;
+        String query = "SELECT * FROM Usuarios WHERE Dni = ?";
+
+        try {
+            getConexion();
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            // Establece el valor del parámetro DNI en el PreparedStatement
+            statement.setString(1, dni2);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String dni = resultSet.getString("Dni");
+                String nombre = resultSet.getString("nombre");
+                String telefono = resultSet.getString("telefono");
+                String edad = resultSet.getString("edad");
+
+                usuario = new Usuario(dni, nombre, telefono, edad);
+            }
+
+            // Cierra los recursos
+            resultSet.close();
+            statement.close();
+
+        } catch (SQLException e) {
+            System.err.println("Error al obtener usuario por DNI: " + e.getMessage());
+        }
+
+        return usuario;
+    }
+
+    
+    public void eliminarUsuarioPorId(String Dni) {
+        String query = "DELETE FROM Usuarios WHERE Dni = ?";
 
         try {
             getConexion();
             PreparedStatement statement = connection.prepareStatement(query);
 
             // Establece el parámetro en la consulta
-            statement.setString(1, login);
+            statement.setString(1, Dni);
 
             // Ejecuta la eliminación
             statement.executeUpdate();
 
-            System.out.println("Usuario eliminado correctamente." + login);
+            System.out.println("Usuario eliminado correctamente." + Dni);
 
             // Cierra los recursos
             statement.close();
@@ -68,29 +102,53 @@ public class ConexionUsuario extends Conexion{
         }
     }
     public void insertarUsuario(Usuario usuario) {
-        String query = "INSERT INTO Usuarios (nombre_usuario, apellidos_usuario, login_usuario, password_usuario) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO Usuarios (Dni , nombre , telefono , edad) VALUES (?, ?, ?, ?)";
 
         try {
             getConexion();
             PreparedStatement statement = connection.prepareStatement(query);
 
             // Establece los parámetros en la consulta
-            statement.setString(1, usuario.getNombre());
-            statement.setString(2, usuario.get());
-            statement.setString(3, usuario.getDni());
-            statement.setString(4, usuario.get());
+            statement.setString(1, usuario.getDni());
+            statement.setString(2, usuario.getNombre());
+            statement.setString(3, usuario.getTelefono());
+            statement.setString(4, usuario.getEdad());
 
             // Ejecuta la inserción
             statement.executeUpdate();
 
             System.out.println("Usuario insertado correctamente.");
 
-            // Cierra los recursos
-            statement.close();
         } catch (SQLException e) {
             System.err.println("Error al insertar usuario: " + e.getMessage());
         }
     }
     
+    public void ModificarCliente(String DniCliente, String nombreCliente, String TelefonoCliente, String EdadCliente) {
+        String query = "UPDATE Usuarios SET nombre = ?, telefono = ?, edad = ? WHERE Dni = ?";
+
+        try {
+            getConexion();
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            // Establece los parámetros en la consulta
+            statement.setString(1, nombreCliente);
+            statement.setString(2, TelefonoCliente);
+            statement.setString(3, EdadCliente);
+            statement.setString(4, DniCliente);
+
+            // Ejecuta la actualización
+            int rowsUpdated = statement.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                System.out.println("Usuario modificado correctamente." + DniCliente);
+            } else {
+                System.out.println("No se encontró ningún usuario con el DNI proporcionado.");
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error al modificar usuario: " + e.getMessage());
+        }
+    }
     
 }

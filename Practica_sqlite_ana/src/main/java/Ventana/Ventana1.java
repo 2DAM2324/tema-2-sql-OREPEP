@@ -68,6 +68,8 @@ public class Ventana1 extends javax.swing.JFrame {
         this.jTable_revison.setModel(modeloRevision);
         MostrarRevisionEnTabla();
         
+        modeloUsuarioDetalles = (DefaultTableModel) jTable_persona1.getModel();
+        this.jTable_persona1.setModel(modeloUsuarioDetalles);
         
     }
     
@@ -95,6 +97,9 @@ public class Ventana1 extends javax.swing.JFrame {
         jLabel_ciudad_natal = new javax.swing.JLabel();
         jTextField_Telefono_cliente = new javax.swing.JTextField();
         Guardar = new javax.swing.JButton();
+        DetallesUsuario = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable_persona1 = new javax.swing.JTable();
         jPanel_libro = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_libro = new javax.swing.JTable();
@@ -280,6 +285,35 @@ public class Ventana1 extends javax.swing.JFrame {
             }
         });
 
+        DetallesUsuario.setText("Detalles");
+        DetallesUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarDetallesUsuario(evt);
+            }
+        });
+
+        jTable_persona1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "DNI", "Telefono", "Edad"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(jTable_persona1);
+        if (jTable_persona1.getColumnModel().getColumnCount() > 0) {
+            jTable_persona1.getColumnModel().getColumn(0).setResizable(false);
+            jTable_persona1.getColumnModel().getColumn(1).setResizable(false);
+        }
+
         javax.swing.GroupLayout jPanel_personaLayout = new javax.swing.GroupLayout(jPanel_persona);
         jPanel_persona.setLayout(jPanel_personaLayout);
         jPanel_personaLayout.setHorizontalGroup(
@@ -287,45 +321,50 @@ public class Ventana1 extends javax.swing.JFrame {
             .addGroup(jPanel_personaLayout.createSequentialGroup()
                 .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_personaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton_modificar_persona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton_borrar_persona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel_personaLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
                         .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel_nombre_persona)
-                            .addComponent(jLabel_DNI)
-                            .addComponent(jLabel_edad_persona)
-                            .addComponent(jLabel_ciudad_natal))
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField_nombre_persona, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                            .addComponent(jTextField_DNI)
-                            .addComponent(jTextField_edad_persona)
-                            .addComponent(jTextField_Telefono_cliente, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton_cancelar_persona)
-                            .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Guardar)
-                                .addComponent(jButton_aniadir_persona, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel_personaLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton_modificar_persona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton_borrar_persona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(DetallesUsuario)))
+                            .addGroup(jPanel_personaLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel_nombre_persona)
+                                    .addComponent(jLabel_DNI)
+                                    .addComponent(jLabel_edad_persona)
+                                    .addComponent(jLabel_ciudad_natal))
+                                .addGap(24, 24, 24)
+                                .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField_nombre_persona, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                                    .addComponent(jTextField_DNI)
+                                    .addComponent(jTextField_edad_persona)
+                                    .addComponent(jTextField_Telefono_cliente, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(32, 32, 32)
+                                .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton_cancelar_persona)
+                                    .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Guardar)
+                                        .addComponent(jButton_aniadir_persona, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         jPanel_personaLayout.setVerticalGroup(
             jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_personaLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
                 .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_personaLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
+                        .addComponent(DetallesUsuario)
+                        .addGap(14, 14, 14)
                         .addComponent(jButton_modificar_persona, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_borrar_persona))
-                    .addGroup(jPanel_personaLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel_personaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_personaLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
@@ -353,7 +392,9 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addComponent(jLabel_ciudad_natal)
                     .addComponent(jTextField_Telefono_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_cancelar_persona))
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         jTabbedPane1.addTab("Cliente", jPanel_persona);
@@ -1327,8 +1368,11 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_BorrarCliente
 
     private void GuardarCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarCliente
-        BorrarClientes(evt);
-        AñadirCliente(evt);
+        TextoNombreCliente(evt);
+        TextoEdadPersona(evt);
+        TextoTelefonoCliente(evt);
+        controlador.ModificarCliente(dniAModificar, nombreCliente, TelefonoCliente, EdadCliente);
+        MostrarClientesEnTabla();
     }//GEN-LAST:event_GuardarCliente
 
     private void TextoTelefonoCliente(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextoTelefonoCliente
@@ -1340,19 +1384,20 @@ public class Ventana1 extends javax.swing.JFrame {
         TextoDniCliente(evt);
         TextoEdadPersona(evt);
         TextoTelefonoCliente(evt);
-        controlador.Crearcliente(DniCliente , nombreCliente , TelefonoCliente , EdadCliente);
+        controlador.Crearcliente(this.DniCliente , nombreCliente , TelefonoCliente , EdadCliente);
         MostrarClientesEnTabla();
     }//GEN-LAST:event_AñadirCliente
 
     private void ModificarCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarCliente
-        /*filaSeleccionada = jTable_persona.getSelectedRow();
+        filaSeleccionada = jTable_persona.getSelectedRow();
         String dni2 = null;
         if (filaSeleccionada != -1) {
             Object dniObj = jTable_persona.getValueAt(filaSeleccionada, jTable_persona.getColumn("Dni").getModelIndex());
             dni2 = dniObj.toString();
         }
+        this.dniAModificar = dni2;
         ArrayList<Usuario> listaClientes;
-        listaClientes = controlador.GetClientesEnTabla();
+        listaClientes = controlador.GetUsuarios();
 
         for(Usuario u : listaClientes){
             if (dni2 != null && dni2.equals(u.getDni())){
@@ -1361,7 +1406,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 jTextField_edad_persona.setText(u.getEdad());
                 jTextField_Telefono_cliente.setText(u.getTelefono());
             }
-        }*/
+        }
     }//GEN-LAST:event_ModificarCliente
 
     private void BorrarClientes(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarClientes
@@ -1593,6 +1638,19 @@ public class Ventana1 extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         controlador.CerrarConexion();
     }//GEN-LAST:event_formWindowClosing
+
+    private void MostrarDetallesUsuario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarDetallesUsuario
+        filaSeleccionada = jTable_persona.getSelectedRow();
+        String dni2 = null;
+        modeloUsuarioDetalles.setRowCount(0);
+        
+        if (filaSeleccionada != -1) {
+            Object dniObj = jTable_persona.getValueAt(filaSeleccionada, jTable_persona.getColumn("Dni").getModelIndex());
+            dni2 = dniObj.toString();
+            Usuario u = controlador.getUsuarioPorDni(dni2);
+            modeloUsuarioDetalles.addRow(new Object[] {u.getNombre() , u.getDni(), u.getTelefono() , u.getEdad()});
+        }
+    }//GEN-LAST:event_MostrarDetallesUsuario
     private void Texto_id_bibliotecaria(java.awt.event.KeyEvent evt) {                                        
         IdBibliotecaria = jTextField_dni_bibliotecaria.getText();
     } 
@@ -1634,7 +1692,7 @@ public class Ventana1 extends javax.swing.JFrame {
         TablaClientes.setRowCount(0);
 
          for(Usuario u : listaClientes){
-            TablaClientes.addRow(new Object[] {u.getNombre() , u.getLogin()});
+            TablaClientes.addRow(new Object[] {u.getNombre() , u.getDni()});
          }
     }
     
@@ -1663,15 +1721,15 @@ public class Ventana1 extends javax.swing.JFrame {
     }
     
     private void MostrarProvedoresEnTabla(){
-        /*ArrayList<Provedores> ListaProvedores;
-        /ListaProvedores = controlador.GetProvedoresEnTabla();
+        ArrayList<Provedores> ListaProvedores;
+        ListaProvedores = controlador.GetProvedores();
         
         //Borrar todas las filas de los provedores
         modeloProvedor.setRowCount(0);
         
         for(Provedores p : ListaProvedores){
             modeloProvedor.addRow(new Object[] {p.getCodProvedor()});
-        }*/
+        }
     }
     
     private void MostrarPrestamoEnTabla(){
@@ -1709,8 +1767,10 @@ public class Ventana1 extends javax.swing.JFrame {
     String EdadCliente;
     String TelefonoCliente;
     private DefaultTableModel TablaClientes;
+    private DefaultTableModel modeloUsuarioDetalles;
     private int filaSeleccionada = -1;
     String dniAeliminar;
+    String dniAModificar = "";
     
     //variables pestaña libro
     String nombreLibro;
@@ -1751,6 +1811,7 @@ public class Ventana1 extends javax.swing.JFrame {
     private int filaSeleccionadaRevision = -1;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DetallesUsuario;
     private javax.swing.JButton Guardar;
     private javax.swing.JButton GuardarLibro;
     private javax.swing.JButton jButton1;
@@ -1812,6 +1873,7 @@ public class Ventana1 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
@@ -1825,6 +1887,7 @@ public class Ventana1 extends javax.swing.JFrame {
     private javax.swing.JTable jTable_Tesis;
     private javax.swing.JTable jTable_libro;
     public javax.swing.JTable jTable_persona;
+    public javax.swing.JTable jTable_persona1;
     public javax.swing.JTable jTable_prestamo;
     public javax.swing.JTable jTable_provedor;
     private javax.swing.JTable jTable_revison;

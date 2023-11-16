@@ -34,14 +34,13 @@ public class Usuario {
     
     private String dni;//clave primaria
     private String nombre;
-    private String Login;
+    private String telefono;
     private String edad;
 
-    public Usuario(String dni, String nombre, String login , String edad) {
+    public Usuario(String dni, String nombre, String telefono , String edad) {
         this.dni = dni;
         this.nombre = nombre;
-
-        this.Login = Login;
+        this.telefono = telefono;
         this.edad = edad;
     }
 
@@ -62,11 +61,11 @@ public class Usuario {
     }
 
     public String getTelefono() {
-        return Login;
+        return telefono;
     }
 
     public void setTelefono(String telefono) {
-        this.Login = telefono;
+        this.telefono = telefono;
     }
 
     public String getEdad() {
