@@ -27,7 +27,7 @@ public class ConexionUsuario extends Conexion{
 
             while (resultSet.next()) {
                 String Dni = resultSet.getString("Dni");
-                String nombre = resultSet.getString("nombre");
+                String nombre = resultSet.getString("Nombre");
                 String telefono = resultSet.getString("telefono");
                 String edad = resultSet.getString("edad");
 

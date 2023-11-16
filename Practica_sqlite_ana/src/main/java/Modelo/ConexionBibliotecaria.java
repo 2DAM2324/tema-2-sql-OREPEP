@@ -27,9 +27,8 @@ public class ConexionBibliotecaria extends Conexion {
 
             while (resultSet.next()) {
                 String Dni = resultSet.getString("Dni");
-                String Nombre = resultSet.getString("Nombre");
 
-                Bibliotecaria bibliotecaria = new Bibliotecaria(Dni , Nombre);
+                Bibliotecaria bibliotecaria = new Bibliotecaria(Dni);
                 bibliotecarias.add(bibliotecaria);
             }
 
@@ -59,9 +58,8 @@ public class ConexionBibliotecaria extends Conexion {
 
             while (resultSet.next()) {
                 String Id = resultSet.getString("Dni");
-                String nombre = resultSet.getString("Nombre");
 
-                bibliotecaria = new Bibliotecaria(Dni , nombre);
+                bibliotecaria = new Bibliotecaria(Dni);
             }
 
             // Cierra los recursos
@@ -98,7 +96,7 @@ public class ConexionBibliotecaria extends Conexion {
         }
     }
     public void insertarBibliotecaria(Bibliotecaria bibliotecaria) {
-        String query = "INSERT INTO Bibliotecaria (Dni , Nombre) VALUES (? ,?)";
+        String query = "INSERT INTO Bibliotecaria (Dni , Nombre ) VALUES (? , null)";
 
         try {
             getConexion();
@@ -106,7 +104,6 @@ public class ConexionBibliotecaria extends Conexion {
 
             // Establece los parámetros en la consulta
             statement.setString(1, bibliotecaria.getDni());
-            statement.setString(2, bibliotecaria.getNombre());
 
             // Ejecuta la inserción
             statement.executeUpdate();
@@ -118,15 +115,15 @@ public class ConexionBibliotecaria extends Conexion {
         }
     }
     
-    public void ModificarBibliotecaria(String Dni , String Nombre) {
-        String query = "UPDATE Bibliotecaria SET Nombre = ? WHERE Dni = ?";
+    public void ModificarBibliotecaria(String Dni , String Dni2) {
+        String query = "UPDATE Bibliotecaria SET Dni = ? WHERE Dni = ?";
 
         try {
             getConexion();
             PreparedStatement statement = connection.prepareStatement(query);
 
             // Establece los parámetros en la consulta
-            statement.setString(1, Nombre);
+            statement.setString(1, Dni2);
             statement.setString(2, Dni);
 
             // Ejecuta la actualización

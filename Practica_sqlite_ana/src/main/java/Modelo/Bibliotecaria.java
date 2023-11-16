@@ -12,9 +12,8 @@ public class Bibliotecaria {
     private String dni;//clave primaria
     private String nombre;
 
-    public Bibliotecaria(String dni , String nombre) {
+    public Bibliotecaria(String dni ) {
         this.dni = dni;
-        this.nombre = nombre;
     }
 
     public String getDni() {

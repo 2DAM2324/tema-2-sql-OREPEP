@@ -1538,8 +1538,8 @@ public class Ventana1 extends javax.swing.JFrame {
         
         if(filaSeleccionadaTablaBibliotecaria != -1){
             Object dniObj = jTable_Bibliotecaria.getValueAt(filaSeleccionadaTablaBibliotecaria, jTable_Bibliotecaria.getColumn("Dni").getModelIndex());
-            String idPrestamo = dniObj.toString();
-            //controlador.EliminarBibliotecaria(idPrestamo);
+            String Dnib = dniObj.toString();
+            controlador.EliminarBibliotecariaPorDni(Dnib);
         }
         MostrarBibliotecariaEnTabla();
     }//GEN-LAST:event_jButton_borrar_bibliotecariaActionPerformed
@@ -1555,30 +1555,34 @@ public class Ventana1 extends javax.swing.JFrame {
     private void jButton_anaidr_bibliotecariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_anaidr_bibliotecariaActionPerformed
 
         Texto_id_bibliotecaria(evt);
-        //controlador.CrearBibliotecaria(IdBibliotecaria);
+        controlador.CrearBibliotecaria(IdBibliotecaria);
         MostrarBibliotecariaEnTabla();
     }//GEN-LAST:event_jButton_anaidr_bibliotecariaActionPerformed
 
     private void jButton_modificar_bibliotecariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modificar_bibliotecariaActionPerformed
-        /*filaSeleccionadaTablaBibliotecaria = jTable_Bibliotecaria.getSelectedRow();
+        filaSeleccionadaTablaBibliotecaria = jTable_Bibliotecaria.getSelectedRow();
         String idProvedor2 = null;
         if (filaSeleccionadaTablaBibliotecaria != -1) {
             Object proObj = jTable_Bibliotecaria.getValueAt(filaSeleccionadaTablaBibliotecaria, jTable_Bibliotecaria.getColumn("Dni").getModelIndex());
             idProvedor2 = proObj.toString();
-        }
-        ArrayList<Bibliotecaria> listaBibliotecaria;
-        //listaBibliotecaria = controlador.GetBibliotecaria();
+            
+            ArrayList<Bibliotecaria> listaBibliotecaria;
+            listaBibliotecaria = controlador.GetBibliotecaria();
 
-        for(Bibliotecaria u : listaBibliotecaria){
-            if (idProvedor2 != null && idProvedor2.equals(u.getDni())){
-                jTextField_dni_bibliotecaria.setText(u.getDni());
+            for(Bibliotecaria u : listaBibliotecaria){
+                if (idProvedor2 != null && idProvedor2.equals(u.getDni())){
+                    jTextField_dni_bibliotecaria.setText(u.getDni());
+                }
             }
-        }*/
+            DniaEliminarBibliotecaria = idProvedor2;
+        }
+        
     }//GEN-LAST:event_jButton_modificar_bibliotecariaActionPerformed
 
     private void jButton_guardar_bibliotecariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_guardar_bibliotecariaActionPerformed
-        jButton_borrar_bibliotecariaActionPerformed(evt);
-        jButton_anaidr_bibliotecariaActionPerformed(evt);
+        Texto_id_bibliotecaria(evt);
+        controlador.ModificarBibliotecaria(DniaEliminarBibliotecaria  , IdBibliotecaria);
+        
     }//GEN-LAST:event_jButton_guardar_bibliotecariaActionPerformed
 
     private void jButton_añadir_revisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_añadir_revisionActionPerformed
@@ -1748,13 +1752,13 @@ public class Ventana1 extends javax.swing.JFrame {
     }
     
     private void MostrarBibliotecariaEnTabla(){
-        /*ArrayList<Bibliotecaria> listaBibliotecarias;
+        ArrayList<Bibliotecaria> listaBibliotecarias;
         listaBibliotecarias = controlador.GetBibliotecaria();
         modeloBibliotecaria.setRowCount(0);
         
         for(Bibliotecaria b : listaBibliotecarias){
             modeloBibliotecaria.addRow(new Object[] {b.getDni()});
-        }*/
+        }
     }
     
     private void MostrarRevisionEnTabla(){
@@ -1809,6 +1813,7 @@ public class Ventana1 extends javax.swing.JFrame {
     String IdBibliotecaria = null;
     private DefaultTableModel modeloBibliotecaria;
     private int filaSeleccionadaTablaBibliotecaria = -1;
+    private String DniaEliminarBibliotecaria = null;
     
     //variables revision 
     String Idrevision_material;

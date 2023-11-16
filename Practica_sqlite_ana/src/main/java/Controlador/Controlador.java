@@ -97,10 +97,10 @@ public class Controlador {
         }
     }
     
-    public void CrearBibliotecaria(String Dni , String nombre){
-        Bibliotecaria b = new Bibliotecaria(Dni, nombre);
+    public void CrearBibliotecaria(String Dni ){
+        Bibliotecaria b = new Bibliotecaria(Dni);
         
-        if((validarDNI(Dni) == true) && (validarNombre(nombre) == true)){
+        if((validarDNI(Dni) == true)){
             conexionBibliotecaria.insertarBibliotecaria(b);
         }else{
             System.out.println("Error al crear Bibliotecaria, campos inválidos");
@@ -129,11 +129,11 @@ public class Controlador {
     }
     
     public void ModificarBibliotecaria(String Dni , String nombre){
-        
-        if((validarDNI(Dni) == true) && (validarNombre(nombre) == true)){
+        System.out.println(Dni + "     " + nombre);
+        if((validarDNI(nombre) == true)){
             conexionBibliotecaria.ModificarBibliotecaria(Dni,nombre);
         }else{
-            System.out.println("Error al Modificar Bibliotecaria, campos inválidos");
+            System.out.println("Error al Modificar Bibliotecaria1, campos inválidos");
         }
     }
     
