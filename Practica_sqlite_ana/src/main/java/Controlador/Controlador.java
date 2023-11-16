@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Controlador;
+import Modelo.Bibliotecaria;
 import Modelo.Conexion;
+import Modelo.ConexionBibliotecaria;
 import Modelo.ConexionProvedor;
 import Modelo.ConexionUsuario;
 import Modelo.Provedores;
@@ -18,12 +20,14 @@ public class Controlador {
     Conexion conexion;
     ConexionUsuario conexionUsuario;
     ConexionProvedor conexionProvedor;
+    ConexionBibliotecaria conexionBibliotecaria;
     
     public Controlador() {
         conexion = new Conexion();
         conexion.getConexion();
         conexionUsuario = new ConexionUsuario();
         conexionProvedor = new ConexionProvedor();
+        conexionBibliotecaria = new ConexionBibliotecaria();
     }
     public void CerrarConexion(){
         conexion.cerrarConexion();
@@ -39,6 +43,11 @@ public class Controlador {
         return listaProvedores;
     }
     
+    public ArrayList<Bibliotecaria> GetBibliotecaria(){
+        ArrayList<Bibliotecaria> listaBibliotecarias = conexionBibliotecaria.obtenerTodasBibliotecarias();
+        return listaBibliotecarias;
+    }
+    
     public Usuario getUsuarioPorDni(String Dni){
         Usuario usuario = conexionUsuario.obtenerUsuarioPorDni(Dni);
         return usuario;
@@ -49,12 +58,21 @@ public class Controlador {
         return provedor;
     }
     
+    public Bibliotecaria GetBibliotecariaPorDni(String Dni){
+        Bibliotecaria bibliotecaria = conexionBibliotecaria.obtenerBibliotecariasPorDni(Dni);
+        return bibliotecaria;
+    }
+    
     public void EliminarUsuarioPorId(String Id){
         conexionUsuario.eliminarUsuarioPorId(Id);
     }
     
     public void EliminarProvedorPorId(String id){
         conexionProvedor.eliminarProvedorPorId(id);
+    }
+    
+    public void EliminarBibliotecariaPorDni(String Dni){
+        conexionBibliotecaria.eliminarBibliotecariaPorId(Dni);
     }
     
     public void Crearcliente(String DniCliente , String nombreCliente , String TelefonoCliente , String EdadCliente) {
@@ -79,6 +97,16 @@ public class Controlador {
         }
     }
     
+    public void CrearBibliotecaria(String Dni , String nombre){
+        Bibliotecaria b = new Bibliotecaria(Dni, nombre);
+        
+        if((validarDNI(Dni) == true) && (validarNombre(nombre) == true)){
+            conexionBibliotecaria.insertarBibliotecaria(b);
+        }else{
+            System.out.println("Error al crear Bibliotecaria, campos inválidos");
+        }
+    }
+    
     public void ModificarCliente(String DniCliente , String nombreCliente , String TelefonoCliente , String EdadCliente){
         Usuario usuario = new Usuario(DniCliente, nombreCliente, TelefonoCliente, EdadCliente);
         boolean crearClienteValido = ComprobarCamposCliente(usuario);
@@ -86,7 +114,7 @@ public class Controlador {
         if(crearClienteValido){
             conexionUsuario.ModificarCliente(DniCliente , nombreCliente , TelefonoCliente ,  EdadCliente);
         }else{
-            System.out.println("Error al crear el cliente. Campos inválidos.");
+            System.out.println("Error al Modificar el cliente. Campos inválidos.");
         }
     }
     
@@ -97,6 +125,15 @@ public class Controlador {
             conexionProvedor.ModificarProvedor(id , id2);
         }else{
             System.out.println("Error al Modificar Provedor, campos inválidos");
+        }
+    }
+    
+    public void ModificarBibliotecaria(String Dni , String nombre){
+        
+        if((validarDNI(Dni) == true) && (validarNombre(nombre) == true)){
+            conexionBibliotecaria.ModificarBibliotecaria(Dni,nombre);
+        }else{
+            System.out.println("Error al Modificar Bibliotecaria, campos inválidos");
         }
     }
     

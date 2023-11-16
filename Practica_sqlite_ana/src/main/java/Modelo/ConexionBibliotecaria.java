@@ -44,8 +44,8 @@ public class ConexionBibliotecaria extends Conexion {
         return bibliotecarias;
     }
     
-    public Provedores obtenerBibliotecariasPorDni(String Dni) {
-        Provedores provedor = null;
+    public Bibliotecaria obtenerBibliotecariasPorDni(String Dni) {
+        Bibliotecaria bibliotecaria = null;
         String query = "SELECT * FROM Bibliotecaria WHERE Dni = ?";
 
         try {
@@ -61,7 +61,7 @@ public class ConexionBibliotecaria extends Conexion {
                 String Id = resultSet.getString("Dni");
                 String nombre = resultSet.getString("Nombre");
 
-                Bibliotecaria bibliotecaria = new Bibliotecaria(Dni , nombre);
+                bibliotecaria = new Bibliotecaria(Dni , nombre);
             }
 
             // Cierra los recursos
@@ -72,7 +72,7 @@ public class ConexionBibliotecaria extends Conexion {
             System.err.println("Error al obtener Bibliotecaria por Dni: " + e.getMessage());
         }
 
-        return provedor;
+        return bibliotecaria;
     }
 
     
@@ -118,7 +118,7 @@ public class ConexionBibliotecaria extends Conexion {
         }
     }
     
-    public void ModificarProvedor(String Dni , String Nombre) {
+    public void ModificarBibliotecaria(String Dni , String Nombre) {
         String query = "UPDATE Bibliotecaria SET Nombre = ? WHERE Dni = ?";
 
         try {
