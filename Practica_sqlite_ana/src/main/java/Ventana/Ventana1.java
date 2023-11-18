@@ -1273,7 +1273,7 @@ public class Ventana1 extends javax.swing.JFrame {
         TextAutor(evt);
         TextoDoi(evt);
         jTextField_provedorTesis(evt);
-        //controlador.CrearTesis(doiTesis, nombreTesis, autorTesis,provedorTesis);
+        controlador.CrearTesis(doiTesis, nombreTesis, autorTesis,provedorTesis);
         MostrarTesisEnTabla();
     }//GEN-LAST:event_AñadirTesis
 
@@ -1310,7 +1310,7 @@ public class Ventana1 extends javax.swing.JFrame {
         TextAutorLibro(evt);
         TextIsbnLibro(evt);
         TextoProvedorLibro(evt);
-        //controlador.CrearLibro(IsbnLibro, nombreLibro, autorLibro , textoProvedorLibro);
+        controlador.CrearLibro(IsbnLibro, nombreLibro, autorLibro , textoProvedorLibro);
         MostrarLibrosEnTabla();
     }//GEN-LAST:event_AñadirLibro
 
@@ -1706,27 +1706,27 @@ public class Ventana1 extends javax.swing.JFrame {
     }
     
     private void MostrarLibrosEnTabla(){
-        /*ArrayList<Libro> listaLibro;
-        listaLibro = controlador.GetLibrosEnTabla();
+        ArrayList<Libro> listaLibro;
+        listaLibro = controlador.GetLibros();
                 
         // Borra todas las filas existentes en el modelo de tabla
         ModeloTablaLibros.setRowCount(0);
          
          for(Libro l : listaLibro){
              ModeloTablaLibros.addRow(new Object[] {l.getTitulo(), l.getIsbn()});
-         }*/
+         }
     }
     
     private void MostrarTesisEnTabla(){
-        /*ArrayList<Tesis> listaTesis;
-        //listaTesis = controlador.GetTesisEnTabla();
+        ArrayList<Tesis> listaTesis;
+        listaTesis = controlador.GetTesis();
         
          // Borra todas las filas existentes en el modelo de tabla
         ModeloTablaTesis.setRowCount(0);
         
          for(Tesis t : listaTesis){
             ModeloTablaTesis.addRow(new Object[] {t.getTitulo(), t.getDoi()});
-         }*/
+         }
     }
     
     private void MostrarProvedoresEnTabla(){

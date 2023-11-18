@@ -28,7 +28,7 @@ public class ConexionMaterialBibliografico extends Conexion{
                 String isbn = resultSet.getString("ISBN");
                 String titulo = resultSet.getString("Titulo");
                 String autor = resultSet.getString("Autor");
-                String proveedor = resultSet.getString("Proveedor");
+                String proveedor = resultSet.getString("Provedor");
 
                 Libro libro = new Libro(isbn, titulo, autor, proveedor);
                 libros.add(libro);
@@ -58,7 +58,7 @@ public class ConexionMaterialBibliografico extends Conexion{
                 String doi = resultSet.getString("DOI");
                 String titulo = resultSet.getString("Titulo");
                 String autor = resultSet.getString("Autor");
-                String proveedor = resultSet.getString("Proveedor");
+                String proveedor = resultSet.getString("Provedor");
 
                 Tesis tesis = new Tesis(doi, titulo, autor, proveedor);
                 tesisList.add(tesis);
@@ -169,12 +169,14 @@ public class ConexionMaterialBibliografico extends Conexion{
         try {
             // Inicia la transacción
             connection.setAutoCommit(false);
-
+            
+            // Inserta en la tabla padre (Material_Bibliografico)
+            insertarMaterialBibliografico(libro.getIsbn());
+            
             // Inserta en la tabla hija (Libro)
             insertarLibroEnTabla(libro);
 
-            // Inserta en la tabla padre (Material_Bibliografico)
-            insertarMaterialBibliografico(libro.getIsbn());
+            
 
             // Confirma la transacción
             connection.commit();
@@ -202,12 +204,14 @@ public class ConexionMaterialBibliografico extends Conexion{
         try {
             // Inicia la transacción
             connection.setAutoCommit(false);
-
+            
+            // Inserta en la tabla padre (Material_Bibliografico)
+            insertarMaterialBibliografico(tesis.getDoi());
+            
             // Inserta en la tabla hija (Tesis)
             insertarTesisEnTabla(tesis);
 
-            // Inserta en la tabla padre (Material_Bibliografico)
-            insertarMaterialBibliografico(tesis.getDoi());
+            
 
             // Confirma la transacción
             connection.commit();
@@ -367,5 +371,66 @@ public class ConexionMaterialBibliografico extends Conexion{
             // Ejecuta la actualización
             statement.executeUpdate();
         }
-    } 
+    }
+    
+    public Libro obtenerLibroPorISBN(String isbn) {
+        Libro libro = null;
+
+        String query = "SELECT * FROM Libro WHERE ISBN = ?";
+
+        try {
+            getConexion();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, isbn);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String titulo = resultSet.getString("Titulo");
+                String autor = resultSet.getString("Autor");
+                String proveedor = resultSet.getString("Provedor");
+
+                libro = new Libro(isbn, titulo, autor, proveedor);
+            }
+
+            // Cierra los recursos
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            System.err.println("Error al obtener libro por ISBN: " + e.getMessage());
+        }
+
+        return libro;
+    }
+
+    public Tesis obtenerTesisPorDOI(String doi) {
+        Tesis tesis = null;
+
+        String query = "SELECT * FROM Tesis WHERE Doi = ?";
+
+        try {
+            getConexion();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, doi);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String titulo = resultSet.getString("Titulo");
+                String autor = resultSet.getString("Autor");
+                String proveedor = resultSet.getString("Provedor");
+
+                tesis = new Tesis(doi, titulo, autor, proveedor);
+            }
+
+            // Cierra los recursos
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            System.err.println("Error al obtener tesis por DOI: " + e.getMessage());
+        }
+
+        return tesis;
+    }
+
 }

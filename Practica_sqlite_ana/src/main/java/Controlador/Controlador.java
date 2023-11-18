@@ -79,7 +79,13 @@ public class Controlador {
     }
     
     public Libro GetLibroPorIsbn(String isbn){
-        
+        Libro libro = conexionMaterialBibliografico.obtenerLibroPorISBN(isbn);
+        return libro;
+    }
+    
+    public Tesis GetTesisPorDoi(String doi){
+        Tesis tesis = conexionMaterialBibliografico.obtenerTesisPorDOI(doi);
+        return tesis;
     }
     
     public void EliminarUsuarioPorId(String Id){
@@ -92,6 +98,14 @@ public class Controlador {
     
     public void EliminarBibliotecariaPorDni(String Dni){
         conexionBibliotecaria.eliminarBibliotecariaPorId(Dni);
+    }
+    
+    public void EliminarLibroPorIsbn(String isbn){
+        conexionMaterialBibliografico.eliminarLibroPorISBN(isbn);
+    }
+    
+    public void EliminarTesisPorDoi(String doi){
+        conexionMaterialBibliografico.eliminarTesisPorDOI(doi);
     }
     
     public void Crearcliente(String DniCliente , String nombreCliente , String TelefonoCliente , String EdadCliente) {
@@ -123,6 +137,26 @@ public class Controlador {
             conexionBibliotecaria.insertarBibliotecaria(b);
         }else{
             System.out.println("Error al crear Bibliotecaria, campos inválidos");
+        }
+    }
+    
+    public void CrearLibro(String isbn , String autor , String nombre , String provedor){
+        Libro libro = new Libro(isbn, nombre, autor, provedor);
+        
+        if((validarDNI(isbn) == true) && (validarNombre(nombre) == true) && (validarNombre(autor) == true) && (validarDNI(provedor) == true) ){
+            conexionMaterialBibliografico.insertarLibro(libro);
+        }else{
+            System.out.println("Error al crear Libro, campos inválidos");
+        }
+    }
+    
+    public void CrearTesis(String doi , String autor , String nombre , String provedor){
+        Tesis tesis = new Tesis(doi, nombre, autor, provedor);
+        
+        if((validarDNI(doi) == true) && (validarNombre(nombre) == true) && (validarNombre(autor) == true) && (validarDNI(provedor) == true) ){
+            conexionMaterialBibliografico.insertarTesis(tesis);
+        }else{
+            System.out.println("Error al crear tesis, campos inválidos");
         }
     }
     
