@@ -12,7 +12,7 @@ public class Tesis extends MaterialBibliografico{
     
     private String doi;//clave primaria
 
-    public Tesis(String doi, String titulo, String autor,Provedores provedor) {
+    public Tesis(String doi, String titulo, String autor,String provedor) {
         super(titulo, autor , provedor);
         this.doi = doi;
     }

@@ -6,9 +6,12 @@ package Controlador;
 import Modelo.Bibliotecaria;
 import Modelo.Conexion;
 import Modelo.ConexionBibliotecaria;
+import Modelo.ConexionMaterialBibliografico;
 import Modelo.ConexionProvedor;
 import Modelo.ConexionUsuario;
+import Modelo.Libro;
 import Modelo.Provedores;
+import Modelo.Tesis;
 import Modelo.Usuario;
 import java.util.ArrayList;
 
@@ -21,6 +24,7 @@ public class Controlador {
     ConexionUsuario conexionUsuario;
     ConexionProvedor conexionProvedor;
     ConexionBibliotecaria conexionBibliotecaria;
+    ConexionMaterialBibliografico conexionMaterialBibliografico;
     
     public Controlador() {
         conexion = new Conexion();
@@ -28,6 +32,7 @@ public class Controlador {
         conexionUsuario = new ConexionUsuario();
         conexionProvedor = new ConexionProvedor();
         conexionBibliotecaria = new ConexionBibliotecaria();
+        conexionMaterialBibliografico = new ConexionMaterialBibliografico();
     }
     public void CerrarConexion(){
         conexion.cerrarConexion();
@@ -48,6 +53,16 @@ public class Controlador {
         return listaBibliotecarias;
     }
     
+    public ArrayList<Libro> GetLibros(){
+        ArrayList<Libro> lista = conexionMaterialBibliografico.obtenerTodosLibros();
+        return lista;
+    }
+    
+    public ArrayList<Tesis> GetTesis(){
+        ArrayList<Tesis> lista = conexionMaterialBibliografico.obtenerTodasTesis();
+        return lista;
+    }
+    
     public Usuario getUsuarioPorDni(String Dni){
         Usuario usuario = conexionUsuario.obtenerUsuarioPorDni(Dni);
         return usuario;
@@ -61,6 +76,10 @@ public class Controlador {
     public Bibliotecaria GetBibliotecariaPorDni(String Dni){
         Bibliotecaria bibliotecaria = conexionBibliotecaria.obtenerBibliotecariasPorDni(Dni);
         return bibliotecaria;
+    }
+    
+    public Libro GetLibroPorIsbn(String isbn){
+        
     }
     
     public void EliminarUsuarioPorId(String Id){

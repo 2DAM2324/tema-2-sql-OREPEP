@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="Modelo.UsuarioTest" time="0.019" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="Modelo.UsuarioTest" time="0.018" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -16,7 +16,7 @@
     <property name="user.country" value="ES"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/orepep/NetBeansProjects/tema-2-sql-OREPEP/Practica_sqlite_ana/target/surefire/surefirebooter-20231116200120295_3.jar /home/orepep/NetBeansProjects/tema-2-sql-OREPEP/Practica_sqlite_ana/target/surefire 2023-11-16T20-01-20_258-jvmRun1 surefire-20231116200120295_1tmp surefire_0-20231116200120295_2tmp"/>
+    <property name="sun.java.command" value="/home/orepep/NetBeansProjects/tema-2-sql-OREPEP/Practica_sqlite_ana/target/surefire/surefirebooter-20231118182240696_3.jar /home/orepep/NetBeansProjects/tema-2-sql-OREPEP/Practica_sqlite_ana/target/surefire 2023-11-18T18-22-40_646-jvmRun1 surefire-20231118182240696_1tmp surefire_0-20231118182240696_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/orepep/NetBeansProjects/tema-2-sql-OREPEP/Practica_sqlite_ana/target/test-classes:/home/orepep/NetBeansProjects/tema-2-sql-OREPEP/Practica_sqlite_ana/target/classes:/home/orepep/.m2/repository/org/xerial/sqlite-jdbc/3.36.0.1/sqlite-jdbc-3.36.0.1.jar:/home/orepep/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.6.0/junit-jupiter-api-5.6.0.jar:/home/orepep/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/home/orepep/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/orepep/.m2/repository/org/junit/platform/junit-platform-commons/1.6.0/junit-platform-commons-1.6.0.jar:/home/orepep/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.6.0/junit-jupiter-params-5.6.0.jar:/home/orepep/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.6.0/junit-jupiter-engine-5.6.0.jar:/home/orepep/.m2/repository/org/junit/platform/junit-platform-engine/1.6.0/junit-platform-engine-1.6.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -32,7 +32,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/home/orepep/NetBeansProjects/tema-2-sql-OREPEP/Practica_sqlite_ana/target/surefire/surefirebooter-20231116200120295_3.jar"/>
+    <property name="surefire.real.class.path" value="/home/orepep/NetBeansProjects/tema-2-sql-OREPEP/Practica_sqlite_ana/target/surefire/surefirebooter-20231118182240696_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11.0.20.1+1-post-Ubuntu-0ubuntu123.04"/>
     <property name="user.name" value="orepep"/>
@@ -64,7 +64,7 @@
 Usuario eliminado correctamente.25378501A
 ]]></system-out>
   </testcase>
-  <testcase name="testCrearUsuario" classname="Modelo.UsuarioTest" time="0.003">
+  <testcase name="testCrearUsuario" classname="Modelo.UsuarioTest" time="0.002">
     <system-out><![CDATA[Usuario insertado correctamente.
 ]]></system-out>
   </testcase>

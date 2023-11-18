@@ -12,9 +12,9 @@ import java.util.ArrayList;
 public class MaterialBibliografico {
     protected String titulo;
     protected String autor;
-    protected Provedores provedor;
+    protected String provedor;
 
-    public MaterialBibliografico(String titulo, String autor , Provedores provedor) {
+    public MaterialBibliografico(String titulo, String autor , String provedor) {
         this.titulo = titulo;
         this.autor = autor;
         this.provedor = provedor;//comprobar si el = funciona bien . 
@@ -35,6 +35,16 @@ public class MaterialBibliografico {
     public void setAutor(String autor) {
         this.autor = autor;
     }
+
+    public String getProvedor() {
+        return provedor;
+    }
+
+    public void setProvedor(String provedor) {
+        this.provedor = provedor;
+    }
+    
+    
 
 }
 

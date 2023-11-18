@@ -12,7 +12,7 @@ public class Libro extends MaterialBibliografico {
     
     private String isbn; //es la clave primaria 
 
-    public Libro(String isbn ,String titulo, String autor , Provedores provedor) {
+    public Libro(String isbn ,String titulo, String autor , String provedor) {
         super(titulo, autor,provedor);
         this.isbn = isbn;
     }
