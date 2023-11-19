@@ -77,6 +77,15 @@ public class Ventana1 extends javax.swing.JFrame {
         modeloTesisDetalles = (DefaultTableModel) jTable_persona3.getModel();
         this.jTable_persona3.setModel(modeloTesisDetalles);
         
+        modeloPrestamoUsuarioDetalles = (DefaultTableModel) jTable_persona4.getModel();
+        this.jTable_persona4.setModel(modeloPrestamoUsuarioDetalles);
+        
+        modeloPrestamoMaterialBibliograficoDetalles = (DefaultTableModel) jTable_persona5.getModel();
+        this.jTable_persona5.setModel(modeloPrestamoMaterialBibliograficoDetalles);
+        
+        modeloRevisionMaterialBibliograficoDetalles = (DefaultTableModel) jTable_persona6.getModel();
+        this.jTable_persona6.setModel(modeloRevisionMaterialBibliograficoDetalles);
+        
     }
     
     
@@ -177,6 +186,11 @@ public class Ventana1 extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTable_prestamo = new javax.swing.JTable();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTable_persona4 = new javax.swing.JTable();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        jTable_persona5 = new javax.swing.JTable();
+        jButton11 = new javax.swing.JButton();
         jTabbedPane5 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
@@ -190,6 +204,9 @@ public class Ventana1 extends javax.swing.JFrame {
         jButton_añadir_revision = new javax.swing.JButton();
         jButton_guardar_revision = new javax.swing.JButton();
         jButton_cancelar_revision = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        jTable_persona6 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -605,7 +622,7 @@ public class Ventana1 extends javax.swing.JFrame {
                         .addComponent(GuardarLibro)
                         .addGap(26, 26, 26)
                         .addComponent(jButton_cancelar_libro)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
         );
@@ -805,7 +822,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel_anio_publicacion1)
                     .addComponent(jTextField_doi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
@@ -937,7 +954,7 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addComponent(jButton6))
                 .addGap(42, 42, 42)
                 .addComponent(jButton7)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("", jPanel2);
@@ -1043,7 +1060,7 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(34, 34, 34)
                 .addComponent(jButton_cancelar_bibliotecaria)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("", jPanel3);
@@ -1111,10 +1128,81 @@ public class Ventana1 extends javax.swing.JFrame {
             jTable_prestamo.getColumnModel().getColumn(1).setResizable(false);
         }
 
+        jTable_persona4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "DNI", "Telefono", "Edad"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane11.setViewportView(jTable_persona4);
+        if (jTable_persona4.getColumnModel().getColumnCount() > 0) {
+            jTable_persona4.getColumnModel().getColumn(0).setResizable(false);
+            jTable_persona4.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        jTable_persona5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Título", "Autor", "Isbn", "Provedor"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane12.setViewportView(jTable_persona5);
+        if (jTable_persona5.getColumnModel().getColumnCount() > 0) {
+            jTable_persona5.getColumnModel().getColumn(0).setResizable(false);
+            jTable_persona5.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        jButton11.setText("Detalles");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane7))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(467, 467, 467)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addGap(0, 17, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane11)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane12)
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -1127,26 +1215,16 @@ public class Ventana1 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
                     .addComponent(jTextField1))
-                .addContainerGap(144, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane7))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(467, 467, 467)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(0, 17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103)
+                .addGap(51, 51, 51)
+                .addComponent(jButton11)
+                .addGap(28, 28, 28)
                 .addComponent(jButton2)
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1160,7 +1238,11 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addComponent(jButton4)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
 
         jTabbedPane2.addTab("", jPanel1);
@@ -1231,6 +1313,35 @@ public class Ventana1 extends javax.swing.JFrame {
             }
         });
 
+        jButton12.setText("Detalles");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
+        jTable_persona6.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Título", "Autor", "Isbn", "Provedor"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane13.setViewportView(jTable_persona6);
+        if (jTable_persona6.getColumnModel().getColumnCount() > 0) {
+            jTable_persona6.getColumnModel().getColumn(0).setResizable(false);
+            jTable_persona6.getColumnModel().getColumn(1).setResizable(false);
+        }
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -1255,10 +1366,13 @@ public class Ventana1 extends javax.swing.JFrame {
                             .addComponent(jButton_borrar_revision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton_añadir_revision, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton_cancelar_revision, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton_guardar_revision, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButton_añadir_revision, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton_cancelar_revision, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton_guardar_revision, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jScrollPane13, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -1271,7 +1385,9 @@ public class Ventana1 extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addComponent(jButton_borrar_revision))
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(95, 95, 95)
+                .addGap(45, 45, 45)
+                .addComponent(jButton12)
+                .addGap(26, 26, 26)
                 .addComponent(jButton_añadir_revision)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1285,7 +1401,9 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addComponent(jTextField_material_revision, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addComponent(jButton_cancelar_revision)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("", jPanel4);
@@ -1606,11 +1724,11 @@ public class Ventana1 extends javax.swing.JFrame {
         materialBibliografico = jTextField1.getText();
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        /*
+        
         Texto_material_bibliografico_prestamo(evt);
         Texto_usuario_prestamo(evt);
         controlador.CrearPrestamo(UsuarioPrestamo, materialBibliografico);
-        MostrarPrestamoEnTabla();*/
+        MostrarPrestamoEnTabla();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void Texto_usuario_prestamo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Texto_usuario_prestamo
@@ -1623,7 +1741,7 @@ public class Ventana1 extends javax.swing.JFrame {
         if (filaSeleccionadaTablaPrestamo != -1) {
             Object dniObj = jTable_prestamo.getValueAt(filaSeleccionadaTablaPrestamo, jTable_prestamo.getColumn("ID").getModelIndex());
             String idPrestamo = dniObj.toString();
-            //controlador.EliminarPrestamo(idPrestamo);
+            controlador.EliminarPrestamoPorId(idPrestamo);
         }
         MostrarPrestamoEnTabla();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -1783,6 +1901,63 @@ public class Ventana1 extends javax.swing.JFrame {
             modeloTesisDetalles.addRow(new Object[] {l.getTitulo() , l.getAutor(), l.getDoi(), l.getProvedor()});
         }
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        filaSeleccionadaTablaPrestamo = jTable_prestamo.getSelectedRow();
+        String dni2 = null;
+        String isbn2 = null;
+        modeloPrestamoUsuarioDetalles.setRowCount(0);
+        modeloPrestamoMaterialBibliograficoDetalles.setRowCount(0);
+        if (filaSeleccionadaTablaPrestamo != -1) {
+            Object dniObj = jTable_prestamo.getValueAt(filaSeleccionadaTablaPrestamo, jTable_prestamo.getColumn("Usuario").getModelIndex());
+            dni2 = dniObj.toString();
+            Usuario u = controlador.getUsuarioPorDni(dni2);
+            modeloPrestamoUsuarioDetalles.addRow(new Object[] {u.getNombre() , u.getDni(), u.getTelefono() , u.getEdad()});
+            
+            Object IsbnObj = jTable_prestamo.getValueAt(filaSeleccionadaTablaPrestamo, jTable_prestamo.getColumn("Material Bibliográfico").getModelIndex());
+            isbn2 = IsbnObj.toString();
+
+            Libro l = controlador.GetLibroPorIsbn(isbn2);
+
+            if (l != null) {
+                modeloPrestamoMaterialBibliograficoDetalles.addRow(new Object[] {l.getTitulo(), l.getAutor(), l.getIsbn(), l.getProvedor()});
+            } else {
+                // Si GetLibroPorIsbn devuelve null, muestra la información de la tesis
+                Tesis t = controlador.GetTesisPorDoi(isbn2);
+                if (t != null) {
+                    modeloPrestamoMaterialBibliograficoDetalles.addRow(new Object[] {t.getTitulo(), t.getAutor(), t.getDoi(), t.getProvedor()});
+                } else {
+                    // Si ni libro ni tesis se encuentran, puedes manejarlo de la manera que desees
+                    System.out.println("No se encontró información para el ISBN: " + isbn2);
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        filaSeleccionadaRevision = jTable_revison.getSelectedRow();
+        String isbn2 = null;
+        modeloRevisionMaterialBibliograficoDetalles.setRowCount(0);
+        if (filaSeleccionadaRevision != -1) {
+            Object IsbnObj = jTable_revison.getValueAt(filaSeleccionadaRevision, jTable_revison.getColumn("Id Material").getModelIndex());
+            isbn2 = IsbnObj.toString();
+
+            Libro l = controlador.GetLibroPorIsbn(isbn2);
+
+            if (l != null) {
+                modeloRevisionMaterialBibliograficoDetalles.addRow(new Object[] {l.getTitulo(), l.getAutor(), l.getIsbn(), l.getProvedor()});
+            } else {
+                // Si GetLibroPorIsbn devuelve null, muestra la información de la tesis
+                Tesis t = controlador.GetTesisPorDoi(isbn2);
+                if (t != null) {
+                    modeloRevisionMaterialBibliograficoDetalles.addRow(new Object[] {t.getTitulo(), t.getAutor(), t.getDoi(), t.getProvedor()});
+                } else {
+                    // Si ni libro ni tesis se encuentran, puedes manejarlo de la manera que desees
+                    System.out.println("No se encontró información para el ISBN: " + isbn2);
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton12ActionPerformed
     private void Texto_id_bibliotecaria(java.awt.event.KeyEvent evt) {                                        
         IdBibliotecaria = jTextField_dni_bibliotecaria.getText();
     } 
@@ -1865,13 +2040,13 @@ public class Ventana1 extends javax.swing.JFrame {
     }
     
     private void MostrarPrestamoEnTabla(){
-        /*ArrayList<Prestamo> listaPrestamos;
-        listaPrestamos = controlador.GetPrestamosEnTabla();
+        ArrayList<Prestamo> listaPrestamos;
+        listaPrestamos = controlador.GetPrestamo();
         modeloPrestamo2.setRowCount(0);
         
         for(Prestamo p : listaPrestamos){
             modeloPrestamo2.addRow(new Object[] {p.getMaterialBibliografico() , p.getUsuario() , p.getFechaVencimiento() , p.getId()});
-        }*/
+        }
     }
     
     private void MostrarBibliotecariaEnTabla(){
@@ -1934,6 +2109,8 @@ public class Ventana1 extends javax.swing.JFrame {
     String materialBibliografico = null;
     String UsuarioPrestamo = null;
     private DefaultTableModel modeloPrestamo2;
+    private DefaultTableModel modeloPrestamoUsuarioDetalles;
+    private DefaultTableModel modeloPrestamoMaterialBibliograficoDetalles;
     private int filaSeleccionadaTablaPrestamo = -1;
     
     //variable bibliotecaria
@@ -1948,6 +2125,7 @@ public class Ventana1 extends javax.swing.JFrame {
     private DefaultTableModel modeloRevision;
     String idRevisonAModificar = null;
     private int filaSeleccionadaRevision = -1;
+    private DefaultTableModel modeloRevisionMaterialBibliograficoDetalles;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DetallesUsuario;
@@ -1955,6 +2133,8 @@ public class Ventana1 extends javax.swing.JFrame {
     private javax.swing.JButton GuardarLibro;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -2012,6 +2192,9 @@ public class Ventana1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_persona;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -2033,6 +2216,9 @@ public class Ventana1 extends javax.swing.JFrame {
     public javax.swing.JTable jTable_persona1;
     public javax.swing.JTable jTable_persona2;
     public javax.swing.JTable jTable_persona3;
+    public javax.swing.JTable jTable_persona4;
+    public javax.swing.JTable jTable_persona5;
+    public javax.swing.JTable jTable_persona6;
     public javax.swing.JTable jTable_prestamo;
     public javax.swing.JTable jTable_provedor;
     private javax.swing.JTable jTable_revison;

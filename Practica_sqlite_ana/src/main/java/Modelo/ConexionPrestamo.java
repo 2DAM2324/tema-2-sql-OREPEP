@@ -61,18 +61,17 @@ public class ConexionPrestamo extends Conexion {
     }
 
     public void insertarPrestamo(Prestamo prestamo) {
-        String query = "INSERT INTO Prestamo (id, Fecha_inicio, Fecha_vencimiento, Id_usuario, Id_Material_Bibliotecario) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO Prestamo ( Fecha_inicio, Fecha_vencimiento, Id_usuario, Id_Material_Bibliotecario) VALUES ( ?, ?, ?, ?)";
 
         try {
             getConexion();
             PreparedStatement statement = connection.prepareStatement(query);
 
             // Establece los parámetros en la consulta
-            statement.setString(1, prestamo.getId());
-            statement.setString(2, prestamo.getFechaInicioAsString());
-            statement.setString(3, prestamo.getFechaVencimiento());
-            statement.setString(4, prestamo.getUsuario());
-            statement.setString(5, prestamo.getMaterialBibliografico());
+            statement.setString(1, prestamo.getFechaInicioAsString());
+            statement.setString(2, prestamo.getFechaVencimiento());
+            statement.setString(3, prestamo.getUsuario());
+            statement.setString(4, prestamo.getMaterialBibliografico());
 
             // Ejecuta la inserción
             statement.executeUpdate();

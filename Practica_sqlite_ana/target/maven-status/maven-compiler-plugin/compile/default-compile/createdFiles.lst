@@ -1,8 +1,10 @@
 Ventana/Ventana1$15.class
+Ventana/Ventana1$68.class
 Ventana/Ventana1$58.class
 Modelo/RevisarMaterial.class
 Ventana/Ventana1$6.class
 Ventana/Ventana1$61.class
+Ventana/Ventana1$71.class
 Modelo/MaterialBibliografico.class
 Modelo/Prestamo.class
 Ventana/Ventana1$65.class
@@ -37,6 +39,7 @@ Ventana/Ventana1$31.class
 Ventana/Ventana1$51.class
 Modelo/Bibliotecaria.class
 Ventana/Ventana1$54.class
+Ventana/Ventana1$69.class
 Modelo/Provedores.class
 Ventana/Ventana1$49.class
 Ventana/Ventana1$29.class
@@ -48,11 +51,13 @@ Ventana/Ventana1$23.class
 Ventana/Ventana1$33.class
 Ventana/Ventana1$8.class
 Ventana/Ventana1$13.class
+Modelo/ConexionPrestamo.class
 Ventana/Ventana1$17.class
 Modelo/ConexionProvedor.class
 Ventana/Ventana1$4.class
 Modelo/ConexionUsuario.class
 Ventana/Ventana1$60.class
+Ventana/Ventana1$70.class
 Modelo/Conexion.class
 Ventana/Ventana1$40.class
 Ventana/Ventana1$10.class
@@ -63,6 +68,7 @@ Ventana/Ventana1$24.class
 Ventana/Ventana1$7.class
 Ventana/Ventana1$59.class
 Modelo/Libro.class
+Ventana/Ventana1$67.class
 Ventana/Ventana1$16.class
 Ventana/Ventana1$32.class
 Modelo/ConexionBibliotecaria.class

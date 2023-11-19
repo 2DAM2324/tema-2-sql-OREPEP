@@ -23,10 +23,10 @@ public class Prestamo {
 
     public Prestamo(String usuario, String materialBibliografico) {
         
-        this.id = generarIDAutomatico();
+        this.id = null;
         this.usuario = usuario;
         this.materialBibliografico = materialBibliografico;
-
+        
         // Obtener la fecha actual
         fechaInicio = new Date();
 
