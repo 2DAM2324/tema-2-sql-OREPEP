@@ -7,10 +7,12 @@ import Modelo.Bibliotecaria;
 import Modelo.Conexion;
 import Modelo.ConexionBibliotecaria;
 import Modelo.ConexionMaterialBibliografico;
+import Modelo.ConexionPrestamo;
 import Modelo.ConexionProvedor;
 import Modelo.ConexionRevision;
 import Modelo.ConexionUsuario;
 import Modelo.Libro;
+import Modelo.Prestamo;
 import Modelo.Provedores;
 import Modelo.RevisarMaterial;
 import Modelo.Tesis;
@@ -28,6 +30,7 @@ public class Controlador {
     ConexionBibliotecaria conexionBibliotecaria;
     ConexionMaterialBibliografico conexionMaterialBibliografico;
     ConexionRevision  conexionRevision;
+    ConexionPrestamo conexionPrestamo;
     
     public Controlador() {
         conexion = new Conexion();
@@ -37,6 +40,7 @@ public class Controlador {
         conexionBibliotecaria = new ConexionBibliotecaria();
         conexionMaterialBibliografico = new ConexionMaterialBibliografico();
         conexionRevision = new ConexionRevision();
+        conexionPrestamo = new ConexionPrestamo();
     }
     public void CerrarConexion(){
         conexion.cerrarConexion();
@@ -72,6 +76,11 @@ public class Controlador {
         return lista;
     }
     
+    public ArrayList<Prestamo> GetPrestamo(){
+        ArrayList<Prestamo> lista = conexionPrestamo.obtenerTodosPrestamos();
+        return lista;
+    }
+    
     public Usuario getUsuarioPorDni(String Dni){
         Usuario usuario = conexionUsuario.obtenerUsuarioPorDni(Dni);
         return usuario;
@@ -102,6 +111,11 @@ public class Controlador {
         return revisar;
     }
     
+    public Prestamo GetPrestamoPorId(int id){
+        Prestamo prestamo = conexionPrestamo.obtenerPrestamoPorId(id);
+        return prestamo;
+    }
+    
     public void EliminarUsuarioPorId(String Id){
         conexionUsuario.eliminarUsuarioPorId(Id);
     }
@@ -125,6 +139,11 @@ public class Controlador {
     public void EliminarRevisionPorId(String id){
         int idRevision = Integer.parseInt(id);
         conexionRevision.eliminarRevisionPorId(idRevision);
+    }
+    
+    public void EliminarPrestamoPorId(String id){
+        int idPrestamo = Integer.parseInt(id);
+        conexionPrestamo.eliminarPrestamoPorId(idPrestamo);
     }
     
     public void Crearcliente(String DniCliente , String nombreCliente , String TelefonoCliente , String EdadCliente) {
@@ -189,6 +208,16 @@ public class Controlador {
         }
     }
     
+    public void CrearPrestamo(String usuario , String MaterialBibliografico){
+        Prestamo prestamo = new Prestamo(usuario, MaterialBibliografico);
+        
+        if((validarDNI(usuario) == true) && (validarDNI(MaterialBibliografico) == true)){
+            conexionPrestamo.insertarPrestamo(prestamo);
+        }else{
+            System.out.println("Error al crear Prestamo , campos inválidos");
+        }
+    }
+    
     public void ModificarCliente(String DniCliente , String nombreCliente , String TelefonoCliente , String EdadCliente){
         Usuario usuario = new Usuario(DniCliente, nombreCliente, TelefonoCliente, EdadCliente);
         boolean crearClienteValido = ComprobarCamposCliente(usuario);
@@ -241,6 +270,14 @@ public class Controlador {
             conexionRevision.modificarRevision(id, Bibliotecaria, MaterialBibliografico);
         }else{
             System.out.println("Error al Modificar Revisión , campos inválidos");
+        }
+    }
+    
+    public void ModificarPrestamo(int id , String usuario , String MaterialBibliografico){
+        if((validarDNI(usuario) == true) && (validarDNI(MaterialBibliografico) == true)){
+            conexionPrestamo.modificarPrestamo(id, usuario , MaterialBibliografico);
+        }else{
+            System.out.println("Error al Modificar Préstamo , campos inválidos");
         }
     }
     
