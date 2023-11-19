@@ -1116,38 +1116,37 @@ public class Ventana1 extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(467, 467, 467)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 17, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(63, 63, 63)
-                                .addComponent(jLabel2)))
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                            .addComponent(jTextField1))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(jScrollPane7)))
-                .addContainerGap())
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel2)))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                    .addComponent(jTextField1))
+                .addContainerGap(144, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane7))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(467, 467, 467)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(0, 17, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(15, 15, 15)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(104, 104, 104)
+                .addGap(103, 103, 103)
                 .addComponent(jButton2)
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1170,13 +1169,13 @@ public class Ventana1 extends javax.swing.JFrame {
 
         jTable_revison.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Id bibliotecaria", "Id Material", "Fecha Revision"
+                "Id bibliotecaria", "Id Material", "Fecha Revision", "Id"
             }
         ));
         jScrollPane8.setViewportView(jTable_revison);
@@ -1265,16 +1264,14 @@ public class Ventana1 extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(7, 7, 7)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
                         .addComponent(jButton_modificar_revision)
-                        .addGap(34, 34, 34)
-                        .addComponent(jButton_borrar_revision)))
-                .addGap(85, 85, 85)
+                        .addGap(35, 35, 35)
+                        .addComponent(jButton_borrar_revision))
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(95, 95, 95)
                 .addComponent(jButton_añadir_revision)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1686,7 +1683,7 @@ public class Ventana1 extends javax.swing.JFrame {
     private void jButton_añadir_revisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_añadir_revisionActionPerformed
         Texto_revision_material(evt);
         texto_revision_bibliotecaria(evt);
-        //controlador.CrearRevisionMaterial(Idrevision_material, idRevision_bibliotecaria);
+        controlador.CrearRevision(idRevision_bibliotecaria,Idrevision_material);
         MostrarRevisionEnTabla();
     }//GEN-LAST:event_jButton_añadir_revisionActionPerformed
     private void texto_revision_bibliotecaria(java.awt.event.KeyEvent evt) {                                              
@@ -1711,13 +1708,9 @@ public class Ventana1 extends javax.swing.JFrame {
         filaSeleccionadaRevision = jTable_revison.getSelectedRow();
         
         if(filaSeleccionadaRevision != -1){
-            Object obj = jTable_revison.getValueAt(filaSeleccionadaRevision, jTable_revison.getColumn("Id bibliotecaria").getModelIndex());
+            Object obj = jTable_revison.getValueAt(filaSeleccionadaRevision, jTable_revison.getColumn("Id").getModelIndex());
             String id = obj.toString();
-            Object obj2 = jTable_revison.getValueAt(filaSeleccionadaRevision, jTable_revison.getColumn("Id Material").getModelIndex());
-            String id2 = obj2.toString();
-            Object obj3 = jTable_revison.getValueAt(filaSeleccionadaRevision, jTable_revison.getColumn("Fecha Revision").getModelIndex());
-            String id3 = obj3.toString();
-            //controlador.EliminarRevisionMaterial(id,id2,id3);
+            controlador.EliminarRevisionPorId(id);
         }
         MostrarRevisionEnTabla();
     }//GEN-LAST:event_jButton_borrar_revisionActionPerformed
@@ -1731,6 +1724,8 @@ public class Ventana1 extends javax.swing.JFrame {
             String id = obj.toString();
             Object obj2 = jTable_revison.getValueAt(filaSeleccionadaRevision, jTable_revison.getColumn("Id Material").getModelIndex());
             String id2 = obj2.toString();
+            Object obj3 = jTable_revison.getValueAt(filaSeleccionadaRevision, jTable_revison.getColumn("Id").getModelIndex());
+            idRevisonAModificar = obj3.toString();
             jTextField_bibliotecaria_revison.setText(id);
             jTextField_material_revision.setText(id2);
         }
@@ -1738,8 +1733,11 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_modificar_revisionActionPerformed
 
     private void jButton_guardar_revisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_guardar_revisionActionPerformed
-        jButton_borrar_revisionActionPerformed(evt);
-        jButton_añadir_revisionActionPerformed(evt);
+        Texto_revision_material(evt);
+        texto_revision_bibliotecaria(evt);
+        int idRevision = Integer.parseInt(idRevisonAModificar);
+        controlador.ModificarRevision(idRevision, idRevision_bibliotecaria,Idrevision_material);
+        MostrarRevisionEnTabla();
     }//GEN-LAST:event_jButton_guardar_revisionActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -1887,12 +1885,12 @@ public class Ventana1 extends javax.swing.JFrame {
     }
     
     private void MostrarRevisionEnTabla(){
-        /*ArrayList<RevisarMaterial> lista = controlador.GetRevision();
+        ArrayList<RevisarMaterial> lista = controlador.GetRevision();
         modeloRevision.setRowCount(0);
         
         for(RevisarMaterial r : lista){
-            modeloRevision.addRow(new Object[] {r.getBibliotecaria() , r.getMaterialBibliografico() , r.getFechaInicioAsString()});
-        }*/
+            modeloRevision.addRow(new Object[] {r.getBibliotecaria() , r.getMaterialBibliografico() , r.getFechaInicioAsString() , r.getCodigoRevision()});
+        }
     }
     
     //Variables de la pestaña cliente.
@@ -1948,6 +1946,7 @@ public class Ventana1 extends javax.swing.JFrame {
     String Idrevision_material;
     String idRevision_bibliotecaria;
     private DefaultTableModel modeloRevision;
+    String idRevisonAModificar = null;
     private int filaSeleccionadaRevision = -1;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

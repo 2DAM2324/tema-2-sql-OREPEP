@@ -25,7 +25,7 @@ public class RevisarMaterial {
         this.CodigoRevision = null;
     }
     
-    public RevisarMaterial(String bibliotecaria, String materialBibliografico , String codigo , String fecha) {
+    public RevisarMaterial(String codigo , String bibliotecaria, String materialBibliografico , String fecha) {
         this.setFechaInicio(fecha);
         this.bibliotecaria = bibliotecaria;
         this.materialBibliografico = materialBibliografico;

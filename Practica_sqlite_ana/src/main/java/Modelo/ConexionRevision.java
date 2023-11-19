@@ -58,6 +58,33 @@ public class ConexionRevision extends Conexion {
             System.err.println("Error al eliminar revisión: " + e.getMessage());
         }
     }
+    
+    public void eliminarRevision(String idBibliotecaria, String idMaterialBibliografico, String fechaRevision) {
+        String query = "DELETE FROM Revision WHERE id_bibliotecaria = ? AND id_material_bibliografico = ? AND fecha_revision = ?";
+
+        try {
+            getConexion();
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            // Establece los parámetros en la consulta
+            statement.setString(1, idBibliotecaria);
+            statement.setString(2, idMaterialBibliografico);
+            statement.setString(3, fechaRevision);
+
+            // Ejecuta la eliminación
+            statement.executeUpdate();
+
+            System.out.println("Revisión eliminada correctamente. Bibliotecaria: " + idBibliotecaria +
+                    ", Material Bibliográfico: " + idMaterialBibliografico +
+                    ", Fecha de Revisión: " + fechaRevision);
+
+            // Cierra los recursos
+            statement.close();
+        } catch (SQLException e) {
+            System.err.println("Error al eliminar revisión: " + e.getMessage());
+        }
+    }
+
 
     public void insertarRevision(RevisarMaterial revision) {
         String query = "INSERT INTO Revision (id_bibliotecaria, id_material_bibliografico, fecha_revision) VALUES (?, ?, ?)";
@@ -91,7 +118,7 @@ public class ConexionRevision extends Conexion {
             // Establece los parámetros en la consulta
             statement.setString(1, idBibliotecaria);
             statement.setString(2, idMaterialBibliografico);
-            statement.setInt(4, id);
+            statement.setInt(3, id);
 
             // Ejecuta la actualización
             int rowsUpdated = statement.executeUpdate();

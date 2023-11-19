@@ -122,8 +122,9 @@ public class Controlador {
         conexionMaterialBibliografico.eliminarTesisPorDOI(doi);
     }
     
-    public void EliminarRevisionPorId(int id){
-        conexionRevision.eliminarRevisionPorId(id);
+    public void EliminarRevisionPorId(String id){
+        int idRevision = Integer.parseInt(id);
+        conexionRevision.eliminarRevisionPorId(idRevision);
     }
     
     public void Crearcliente(String DniCliente , String nombreCliente , String TelefonoCliente , String EdadCliente) {
