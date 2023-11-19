@@ -13,28 +13,36 @@ import java.util.UUID;
  */
 public class RevisarMaterial {
 
-    private Bibliotecaria bibliotecaria;
+    private String bibliotecaria;
     private String materialBibliografico;
     private String CodigoRevision;
     private Date fechaRevision;
     
-    public RevisarMaterial(Bibliotecaria bibliotecaria, String materialBibliografico) {
+    public RevisarMaterial(String codigo , String bibliotecaria, String materialBibliografico) {
         this.fechaRevision = new Date();
         this.bibliotecaria = bibliotecaria;
         this.materialBibliografico = materialBibliografico;
-        this.CodigoRevision = generarIDAutomatico();
+        this.CodigoRevision = codigo;
     }
     
-    public RevisarMaterial(Bibliotecaria bibliotecaria, String materialBibliografico , String codigo , String fecha) {
+    public RevisarMaterial(String bibliotecaria, String materialBibliografico , String codigo , String fecha) {
         this.setFechaInicio(fecha);
         this.bibliotecaria = bibliotecaria;
         this.materialBibliografico = materialBibliografico;
         this.CodigoRevision = codigo;
     }
     
-    private String generarIDAutomatico() {
+    /*private String generarIDAutomatico() {
     String uuid = UUID.randomUUID().toString();
     return uuid.replace("-", "");
+    }*/
+
+    public String getBibliotecaria() {
+        return bibliotecaria;
+    }
+
+    public void setBibliotecaria(String bibliotecaria) {
+        this.bibliotecaria = bibliotecaria;
     }
 
     public void setFechaInicio(String fechaInicio) {
