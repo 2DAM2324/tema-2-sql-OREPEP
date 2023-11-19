@@ -8,9 +8,11 @@ import Modelo.Conexion;
 import Modelo.ConexionBibliotecaria;
 import Modelo.ConexionMaterialBibliografico;
 import Modelo.ConexionProvedor;
+import Modelo.ConexionRevision;
 import Modelo.ConexionUsuario;
 import Modelo.Libro;
 import Modelo.Provedores;
+import Modelo.RevisarMaterial;
 import Modelo.Tesis;
 import Modelo.Usuario;
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public class Controlador {
     ConexionProvedor conexionProvedor;
     ConexionBibliotecaria conexionBibliotecaria;
     ConexionMaterialBibliografico conexionMaterialBibliografico;
+    ConexionRevision  conexionRevision;
     
     public Controlador() {
         conexion = new Conexion();
@@ -33,6 +36,7 @@ public class Controlador {
         conexionProvedor = new ConexionProvedor();
         conexionBibliotecaria = new ConexionBibliotecaria();
         conexionMaterialBibliografico = new ConexionMaterialBibliografico();
+        conexionRevision = new ConexionRevision();
     }
     public void CerrarConexion(){
         conexion.cerrarConexion();
@@ -63,6 +67,11 @@ public class Controlador {
         return lista;
     }
     
+    public ArrayList<RevisarMaterial> GetRevision(){
+        ArrayList<RevisarMaterial> lista = conexionRevision.obtenerTodasRevisiones();
+        return lista;
+    }
+    
     public Usuario getUsuarioPorDni(String Dni){
         Usuario usuario = conexionUsuario.obtenerUsuarioPorDni(Dni);
         return usuario;
@@ -88,6 +97,11 @@ public class Controlador {
         return tesis;
     }
     
+    public RevisarMaterial GetRevisionPorId(int id){
+        RevisarMaterial revisar = conexionRevision.obtenerRevisionPorId(id);
+        return revisar;
+    }
+    
     public void EliminarUsuarioPorId(String Id){
         conexionUsuario.eliminarUsuarioPorId(Id);
     }
@@ -106,6 +120,10 @@ public class Controlador {
     
     public void EliminarTesisPorDoi(String doi){
         conexionMaterialBibliografico.eliminarTesisPorDOI(doi);
+    }
+    
+    public void EliminarRevisionPorId(int id){
+        conexionRevision.eliminarRevisionPorId(id);
     }
     
     public void Crearcliente(String DniCliente , String nombreCliente , String TelefonoCliente , String EdadCliente) {
@@ -160,6 +178,16 @@ public class Controlador {
         }
     }
     
+    public void CrearRevision(String Bibliotecaria , String MaterialBibliografico){
+        RevisarMaterial revisarMaterial = new RevisarMaterial(Bibliotecaria, MaterialBibliografico);
+        
+        if((validarDNI(Bibliotecaria) == true) && (validarDNI(MaterialBibliografico) == true)){
+            conexionRevision.insertarRevision(revisarMaterial);
+        }else{
+            System.out.println("Error al crear Revisión , campos inválidos");
+        }
+    }
+    
     public void ModificarCliente(String DniCliente , String nombreCliente , String TelefonoCliente , String EdadCliente){
         Usuario usuario = new Usuario(DniCliente, nombreCliente, TelefonoCliente, EdadCliente);
         boolean crearClienteValido = ComprobarCamposCliente(usuario);
@@ -204,6 +232,14 @@ public class Controlador {
             conexionMaterialBibliografico.modificarTesis(doi,autor, nombre ,provedor);
         }else{
             System.out.println("Error al Modificar tesis, campos inválidos");
+        }
+    }
+    
+    public void ModificarRevision(int id , String Bibliotecaria , String MaterialBibliografico){
+        if((validarDNI(Bibliotecaria) == true) && (validarDNI(MaterialBibliografico) == true)){
+            conexionRevision.modificarRevision(id, Bibliotecaria, MaterialBibliografico);
+        }else{
+            System.out.println("Error al Modificar Revisión , campos inválidos");
         }
     }
     

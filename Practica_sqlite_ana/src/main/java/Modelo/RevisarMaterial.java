@@ -18,11 +18,11 @@ public class RevisarMaterial {
     private String CodigoRevision;
     private Date fechaRevision;
     
-    public RevisarMaterial(String codigo , String bibliotecaria, String materialBibliografico) {
+    public RevisarMaterial( String bibliotecaria, String materialBibliografico) {
         this.fechaRevision = new Date();
         this.bibliotecaria = bibliotecaria;
         this.materialBibliografico = materialBibliografico;
-        this.CodigoRevision = codigo;
+        this.CodigoRevision = null;
     }
     
     public RevisarMaterial(String bibliotecaria, String materialBibliografico , String codigo , String fecha) {

@@ -81,8 +81,8 @@ public class ConexionRevision extends Conexion {
         }
     }
 
-    public void modificarRevision(int id, String idBibliotecaria, String idMaterialBibliografico, String fechaRevision) {
-        String query = "UPDATE Revision SET id_bibliotecaria = ?, id_material_bibliografico = ?, fecha_revision = ? WHERE id = ?";
+    public void modificarRevision(int id, String idBibliotecaria, String idMaterialBibliografico) {
+        String query = "UPDATE Revision SET id_bibliotecaria = ?, id_material_bibliografico = ? WHERE id = ?";
 
         try {
             getConexion();
@@ -91,7 +91,6 @@ public class ConexionRevision extends Conexion {
             // Establece los parámetros en la consulta
             statement.setString(1, idBibliotecaria);
             statement.setString(2, idMaterialBibliografico);
-            statement.setString(3, fechaRevision);
             statement.setInt(4, id);
 
             // Ejecuta la actualización
@@ -110,5 +109,38 @@ public class ConexionRevision extends Conexion {
             System.err.println("Error al modificar revisión: " + e.getMessage());
         }
     }
+    
+    public RevisarMaterial obtenerRevisionPorId(int id) {
+        RevisarMaterial revision = null;
+        String query = "SELECT * FROM Revision WHERE id = ?";
+
+        try {
+            getConexion();
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            // Establece el valor del parámetro ID en el PreparedStatement
+            statement.setInt(1, id);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String idBibliotecaria = resultSet.getString("id_bibliotecaria");
+                String idMaterialBibliografico = resultSet.getString("id_material_bibliografico");
+                String fechaRevision = resultSet.getString("fecha_revision");
+                String idString = String.valueOf(id);
+                revision = new RevisarMaterial(idString, idBibliotecaria, idMaterialBibliografico, fechaRevision);
+            }
+
+            // Cierra los recursos
+            resultSet.close();
+            statement.close();
+
+        } catch (SQLException e) {
+            System.err.println("Error al obtener revisión por ID: " + e.getMessage());
+        }
+
+        return revision;
+    }
+
 
 }
