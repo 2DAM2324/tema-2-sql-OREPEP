@@ -141,7 +141,7 @@ public class Controlador {
     }
     
     public void CrearLibro(String isbn , String autor , String nombre , String provedor){
-        Libro libro = new Libro(isbn, nombre, autor, provedor);
+        Libro libro = new Libro(isbn, autor, nombre, provedor);
         
         if((validarDNI(isbn) == true) && (validarNombre(nombre) == true) && (validarNombre(autor) == true) && (validarDNI(provedor) == true) ){
             conexionMaterialBibliografico.insertarLibro(libro);
@@ -151,12 +151,12 @@ public class Controlador {
     }
     
     public void CrearTesis(String doi , String autor , String nombre , String provedor){
-        Tesis tesis = new Tesis(doi, nombre, autor, provedor);
+        Tesis tesis = new Tesis(doi, autor, nombre, provedor);
         
         if((validarDNI(doi) == true) && (validarNombre(nombre) == true) && (validarNombre(autor) == true) && (validarDNI(provedor) == true) ){
             conexionMaterialBibliografico.insertarTesis(tesis);
         }else{
-            System.out.println("Error al crear tesis, campos inválidos");
+            System.out.println("Error al crear tesiss, campos inválidos");
         }
     }
     
@@ -187,6 +187,23 @@ public class Controlador {
             conexionBibliotecaria.ModificarBibliotecaria(Dni,nombre);
         }else{
             System.out.println("Error al Modificar Bibliotecaria1, campos inválidos");
+        }
+    }
+    
+    public void ModificarLibro(String isbn , String autor , String nombre , String provedor ){
+        
+        if((validarDNI(isbn) == true) && (validarNombre(nombre) == true) && (validarNombre(autor) == true) && (validarDNI(provedor) == true) ){
+            conexionMaterialBibliografico.modificarLibro(isbn,autor, nombre ,provedor);
+        }else{
+            System.out.println("Error al Modificar Libro, campos inválidos");
+        }
+    }
+    
+    public void ModificarTesis(String doi , String autor , String nombre , String provedor){
+        if((validarDNI(doi) == true) && (validarNombre(nombre) == true) && (validarNombre(autor) == true) && (validarDNI(provedor) == true) ){
+            conexionMaterialBibliografico.modificarTesis(doi,autor, nombre ,provedor);
+        }else{
+            System.out.println("Error al Modificar tesis, campos inválidos");
         }
     }
     

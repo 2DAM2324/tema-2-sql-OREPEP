@@ -1322,38 +1322,43 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_provedorTesis
 
     private void GuardarTesis(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarTesis
-        BorrarTesis(evt);
-        AñadirTesis(evt);
+        Texto_titulo_tesis(evt);
+        TextAutor(evt);
+        jTextField_provedorTesis(evt);
+        controlador.ModificarTesis(DoiAModificar, nombreTesis, autorTesis,provedorTesis);
+        MostrarTesisEnTabla();
     }//GEN-LAST:event_GuardarTesis
 
     private void BorrarTesis(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarTesis
-        /*filaSeleccionadaTesis = jTable_Tesis.getSelectedRow();
+        filaSeleccionadaTesis = jTable_Tesis.getSelectedRow();
 
         if (filaSeleccionadaTesis != -1) {
             Object DoiObj = jTable_Tesis.getValueAt(filaSeleccionadaTesis, jTable_Tesis.getColumn("Doi").getModelIndex());
             String tesisAeliminar = DoiObj.toString();
-            controlador.EliminarTesis(tesisAeliminar);
+            controlador.EliminarTesisPorDoi(tesisAeliminar);
         }
-        MostrarTesisEnTabla();*/
+        MostrarTesisEnTabla();
     }//GEN-LAST:event_BorrarTesis
 
     private void ModificarTesis(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarTesis
-        /*filaSeleccionadaTesis = jTable_Tesis.getSelectedRow();
+        filaSeleccionadaTesis = jTable_Tesis.getSelectedRow();
         String TesisAModificar2 = null;
 
         if (filaSeleccionadaTesis != -1) {
             Object DoinObj = jTable_Tesis.getValueAt(filaSeleccionadaTesis, jTable_Tesis.getColumn("Doi").getModelIndex());
             TesisAModificar2 = DoinObj.toString();
-        }
-        ArrayList<Tesis> listaTesis = controlador.GetTesisEnTabla();
-        for(Tesis t : listaTesis){
-            if(TesisAModificar2 != null && TesisAModificar2.equals(t.getDoi())){
-                jTextField_titulo_tesis.setText(t.getTitulo());
-                jTextField_autor_tesis.setText(t.getAutor());
-                jTextField_doi.setText(t.getDoi());
-                jTextField_doi1.setText(t.getProvedor());
+            ArrayList<Tesis> listaTesis = controlador.GetTesis();
+            for(Tesis t : listaTesis){
+                if(TesisAModificar2 != null && TesisAModificar2.equals(t.getDoi())){
+                    jTextField_titulo_tesis.setText(t.getTitulo());
+                    jTextField_autor_tesis.setText(t.getAutor());
+                    jTextField_doi.setText(t.getDoi());
+                    jTextField_doi1.setText(t.getProvedor());
+                }
             }
-        }*/
+            DoiAModificar = TesisAModificar2;
+        }
+        
     }//GEN-LAST:event_ModificarTesis
 
     private void AñadirTesis(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirTesis
@@ -1385,8 +1390,12 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_Texto_titulo_tesis
 
     private void GuardarLibro(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarLibro
-        BorrarLibro(evt);
-        AñadirLibro(evt);
+        TextNombreLibro(evt);
+        TextAutorLibro(evt);
+        //
+        TextoProvedorLibro(evt);
+        controlador.ModificarLibro(IsbnAmodificar, nombreLibro, autorLibro , textoProvedorLibro);
+        MostrarLibrosEnTabla();
     }//GEN-LAST:event_GuardarLibro
 
     private void TextoProvedorLibro(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextoProvedorLibro
@@ -1403,22 +1412,23 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_AñadirLibro
 
     private void ModificarLibro(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarLibro
-        /*filaSeleccionadaLibro = jTable_libro.getSelectedRow();
+        filaSeleccionadaLibro = jTable_libro.getSelectedRow();
         String libroAModificar2 = null;
 
         if (filaSeleccionadaLibro != -1) {
             Object IsbnObj = jTable_libro.getValueAt(filaSeleccionadaLibro, jTable_libro.getColumn("ISBN").getModelIndex());
             libroAModificar2 = IsbnObj.toString();
-        }
-        ArrayList<Libro> listaLibros = controlador.GetLibrosEnTabla();
-        for(Libro l : listaLibros){
-            if(libroAModificar2 != null && libroAModificar2.equals(l.getIsbn())){
-                jTextField_nombre_libro.setText(l.getTitulo());
-                jTextField_autor.setText(l.getAutor());
-                jTextField_isbn.setText(l.getIsbn());
-                jTextField_provedor.setText(l.getProvedor());
+            ArrayList<Libro> listaLibros = controlador.GetLibros();
+            for(Libro l : listaLibros){
+                if(libroAModificar2 != null && libroAModificar2.equals(l.getIsbn())){
+                    jTextField_nombre_libro.setText(l.getTitulo());
+                    jTextField_autor.setText(l.getAutor());
+                    jTextField_isbn.setText(l.getIsbn());
+                    jTextField_provedor.setText(l.getProvedor());
+                }
             }
-        }*/
+            IsbnAmodificar = libroAModificar2;
+            } 
     }//GEN-LAST:event_ModificarLibro
 
     private void BorrarLibro(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarLibro
@@ -1901,6 +1911,7 @@ public class Ventana1 extends javax.swing.JFrame {
     String autorLibro;
     String IsbnLibro;
     String textoProvedorLibro;
+    String IsbnAmodificar = null;
     private DefaultTableModel ModeloTablaLibros;
     private int filaSeleccionadaLibro = -1;
     private DefaultTableModel modeloLibroDetalles;
@@ -1910,6 +1921,7 @@ public class Ventana1 extends javax.swing.JFrame {
     String autorTesis;
     String doiTesis;
     String provedorTesis;
+    String DoiAModificar = null;
     private DefaultTableModel ModeloTablaTesis;
     private int filaSeleccionadaTesis = -1;
     private DefaultTableModel modeloTesisDetalles;
