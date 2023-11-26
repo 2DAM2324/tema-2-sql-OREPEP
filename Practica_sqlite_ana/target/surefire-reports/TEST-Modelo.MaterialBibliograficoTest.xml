@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="Modelo.ProvedoresTest" time="0.013" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="Modelo.MaterialBibliograficoTest" time="0.03" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -59,17 +59,31 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="ModificarProvedor" classname="Modelo.ProvedoresTest" time="0.003">
+  <testcase name="ModificarLibro" classname="Modelo.MaterialBibliograficoTest" time="0.003">
     <system-out><![CDATA[Provedor insertado correctamente.
-Provedor modificado correctamente.13425894P
+Libro insertado correctamente.
+Tesis insertada correctamente.
+Libro modificado correctamente: 13425094q
 ]]></system-out>
   </testcase>
-  <testcase name="testCrearProvedor" classname="Modelo.ProvedoresTest" time="0.002">
-    <system-out><![CDATA[Provedor insertado correctamente.
+  <testcase name="ModificarTEsis" classname="Modelo.MaterialBibliograficoTest" time="0.002">
+    <system-out><![CDATA[Tesis modificada correctamente: 25308501A
 ]]></system-out>
   </testcase>
-  <testcase name="testEliminarProvedor" classname="Modelo.ProvedoresTest" time="0.003">
-    <system-out><![CDATA[Provedor eliminado correctamente.87320102P
+  <testcase name="CrearLibro" classname="Modelo.MaterialBibliograficoTest" time="0.002">
+    <system-out><![CDATA[Libro insertado correctamente.
+]]></system-out>
+  </testcase>
+  <testcase name="CrearTesis" classname="Modelo.MaterialBibliograficoTest" time="0.002">
+    <system-out><![CDATA[Tesis insertada correctamente.
+]]></system-out>
+  </testcase>
+  <testcase name="EliminarLibro" classname="Modelo.MaterialBibliograficoTest" time="0.002">
+    <system-out><![CDATA[Libro eliminado correctamente: 13425094q
+]]></system-out>
+  </testcase>
+  <testcase name="EliminarTesis" classname="Modelo.MaterialBibliograficoTest" time="0.003">
+    <system-out><![CDATA[Tesis eliminada correctamente: 25308501A
 ]]></system-out>
   </testcase>
 </testsuite>
