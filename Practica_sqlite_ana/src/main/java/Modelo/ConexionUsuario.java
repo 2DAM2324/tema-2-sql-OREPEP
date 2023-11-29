@@ -4,11 +4,12 @@
  */
 package Modelo;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+//import javafx.scene.control.Alert;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,7 +41,7 @@ public class ConexionUsuario extends Conexion{
             statement.close();
             
         } catch (SQLException e) {
-            System.err.println("Error al obtener usuarios: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al obtener usuarios.");
         }
 
         return usuarios;
@@ -73,7 +74,7 @@ public class ConexionUsuario extends Conexion{
             statement.close();
 
         } catch (SQLException e) {
-            System.err.println("Error al obtener usuario por DNI: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al obtener usuario por DNI: " + e.getMessage());
         }
 
         return usuario;
@@ -93,12 +94,11 @@ public class ConexionUsuario extends Conexion{
             // Ejecuta la eliminación
             statement.executeUpdate();
 
-            System.out.println("Usuario eliminado correctamente." + Dni);
-
+            JOptionPane.showMessageDialog(null, "Usuario eliminado correctamente." + Dni);
             // Cierra los recursos
             statement.close();
         } catch (SQLException e) {
-            System.err.println("Error al eliminar usuario: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al eliminar usuario: " + e.getMessage());
         }
     }
     public void insertarUsuario(Usuario usuario) {
@@ -117,10 +117,10 @@ public class ConexionUsuario extends Conexion{
             // Ejecuta la inserción
             statement.executeUpdate();
 
-            System.out.println("Usuario insertado correctamente.");
+            JOptionPane.showMessageDialog(null, "Usuario insertado correctamente.");
 
         } catch (SQLException e) {
-            System.err.println("Error al insertar usuario: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al insertar usuario: " + e.getMessage());
         }
     }
     
@@ -141,13 +141,13 @@ public class ConexionUsuario extends Conexion{
             int rowsUpdated = statement.executeUpdate();
 
             if (rowsUpdated > 0) {
-                System.out.println("Usuario modificado correctamente." + DniCliente);
+                JOptionPane.showMessageDialog(null, "Usuario modificado correctamente." + DniCliente);
             } else {
-                System.out.println("No se encontró ningún usuario con el DNI proporcionado.");
+                JOptionPane.showMessageDialog(null, "No se encontró ningún usuario con el DNI proporcionado.");
             }
 
         } catch (SQLException e) {
-            System.err.println("Error al modificar usuario: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al modificar usuario: " + e.getMessage());
         }
     }
     

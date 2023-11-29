@@ -17,6 +17,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.NotSerializableException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.xml.sax.SAXException;
 
@@ -1928,7 +1929,7 @@ public class Ventana1 extends javax.swing.JFrame {
                     modeloPrestamoMaterialBibliograficoDetalles.addRow(new Object[] {t.getTitulo(), t.getAutor(), t.getDoi(), t.getProvedor()});
                 } else {
                     // Si ni libro ni tesis se encuentran, puedes manejarlo de la manera que desees
-                    System.out.println("No se encontró información para el ISBN: " + isbn2);
+                    JOptionPane.showMessageDialog(null, "No se encontró información para el ISBN: " + isbn2);
                 }
             }
         }
@@ -1953,7 +1954,7 @@ public class Ventana1 extends javax.swing.JFrame {
                     modeloRevisionMaterialBibliograficoDetalles.addRow(new Object[] {t.getTitulo(), t.getAutor(), t.getDoi(), t.getProvedor()});
                 } else {
                     // Si ni libro ni tesis se encuentran, puedes manejarlo de la manera que desees
-                    System.out.println("No se encontró información para el ISBN: " + isbn2);
+                    JOptionPane.showMessageDialog(null, "No se encontró información para el ISBN: " + isbn2);
                 }
             }
         }

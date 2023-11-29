@@ -18,6 +18,7 @@ import Modelo.RevisarMaterial;
 import Modelo.Tesis;
 import Modelo.Usuario;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -153,7 +154,7 @@ public class Controlador {
         if (crearClienteValido) {
             conexionUsuario.insertarUsuario(usuario);
         } else {
-            System.out.println("Error al crear el cliente. Campos inválidos.");
+            JOptionPane.showMessageDialog(null, "Error al crear el cliente. Campos inválidos.");
         }
     }
     
@@ -164,7 +165,7 @@ public class Controlador {
         if(crearProvedorValido){
             conexionProvedor.insertarProvedor(provedor);
         }else{
-            System.out.println("Error al crear Provedor, campos inválidos");
+            JOptionPane.showMessageDialog(null, "Error al crear Provedor, campos inválidos");
         }
     }
     
@@ -174,7 +175,7 @@ public class Controlador {
         if((validarDNI(Dni) == true)){
             conexionBibliotecaria.insertarBibliotecaria(b);
         }else{
-            System.out.println("Error al crear Bibliotecaria, campos inválidos");
+            JOptionPane.showMessageDialog(null, "Error al crear Bibliotecaria, campos inválidos");
         }
     }
     
@@ -184,7 +185,7 @@ public class Controlador {
         if((validarDNI(isbn) == true) && (validarNombre(nombre) == true) && (validarNombre(autor) == true) && (validarDNI(provedor) == true) ){
             conexionMaterialBibliografico.insertarLibro(libro);
         }else{
-            System.out.println("Error al crear Libro, campos inválidos");
+            JOptionPane.showMessageDialog(null, "Error al crear Libro, campos inválidos");
         }
     }
     
@@ -194,7 +195,7 @@ public class Controlador {
         if((validarDNI(doi) == true) && (validarNombre(nombre) == true) && (validarNombre(autor) == true) && (validarDNI(provedor) == true) ){
             conexionMaterialBibliografico.insertarTesis(tesis);
         }else{
-            System.out.println("Error al crear tesiss, campos inválidos");
+            JOptionPane.showMessageDialog(null, "Error al crear tesiss, campos inválidos");
         }
     }
     
@@ -204,7 +205,7 @@ public class Controlador {
         if((validarDNI(Bibliotecaria) == true) && (validarDNI(MaterialBibliografico) == true)){
             conexionRevision.insertarRevision(revisarMaterial);
         }else{
-            System.out.println("Error al crear Revisión , campos inválidos");
+            JOptionPane.showMessageDialog(null, "Error al crear Revisión , campos inválidos");
         }
     }
     
@@ -214,7 +215,7 @@ public class Controlador {
         if((validarDNI(usuario) == true) && (validarDNI(MaterialBibliografico) == true)){
             conexionPrestamo.insertarPrestamo(prestamo);
         }else{
-            System.out.println("Error al crear Prestamo , campos inválidos");
+            JOptionPane.showMessageDialog(null, "Error al crear Prestamo , campos inválidos");
         }
     }
     
@@ -225,7 +226,7 @@ public class Controlador {
         if(crearClienteValido){
             conexionUsuario.ModificarCliente(DniCliente , nombreCliente , TelefonoCliente ,  EdadCliente);
         }else{
-            System.out.println("Error al Modificar el cliente. Campos inválidos.");
+            JOptionPane.showMessageDialog(null, "Error al Modificar el cliente. Campos inválidos.");
         }
     }
     
@@ -235,16 +236,16 @@ public class Controlador {
         if(crearProvedorValido){
             conexionProvedor.ModificarProvedor(id , id2);
         }else{
-            System.out.println("Error al Modificar Provedor, campos inválidos");
+            JOptionPane.showMessageDialog(null, "Error al Modificar Provedor, campos inválidos");
         }
     }
     
     public void ModificarBibliotecaria(String Dni , String nombre){
-        System.out.println(Dni + "     " + nombre);
+        //System.out.println(Dni + "     " + nombre);
         if((validarDNI(nombre) == true)){
             conexionBibliotecaria.ModificarBibliotecaria(Dni,nombre);
         }else{
-            System.out.println("Error al Modificar Bibliotecaria1, campos inválidos");
+            JOptionPane.showMessageDialog(null, "Error al Modificar Bibliotecaria1, campos inválidos");
         }
     }
     
@@ -253,7 +254,7 @@ public class Controlador {
         if((validarDNI(isbn) == true) && (validarNombre(nombre) == true) && (validarNombre(autor) == true) && (validarDNI(provedor) == true) ){
             conexionMaterialBibliografico.modificarLibro(isbn,autor, nombre ,provedor);
         }else{
-            System.out.println("Error al Modificar Libro, campos inválidos");
+            JOptionPane.showMessageDialog(null, "Error al Modificar Libro, campos inválidos");
         }
     }
     
@@ -261,7 +262,7 @@ public class Controlador {
         if((validarDNI(doi) == true) && (validarNombre(nombre) == true) && (validarNombre(autor) == true) && (validarDNI(provedor) == true) ){
             conexionMaterialBibliografico.modificarTesis(doi,autor, nombre ,provedor);
         }else{
-            System.out.println("Error al Modificar tesis, campos inválidos");
+            JOptionPane.showMessageDialog(null, "Error al Modificar tesis, campos inválidos");
         }
     }
     
@@ -269,7 +270,7 @@ public class Controlador {
         if((validarDNI(Bibliotecaria) == true) && (validarDNI(MaterialBibliografico) == true)){
             conexionRevision.modificarRevision(id, Bibliotecaria, MaterialBibliografico);
         }else{
-            System.out.println("Error al Modificar Revisión , campos inválidos");
+            JOptionPane.showMessageDialog(null, "Error al Modificar Revisión , campos inválidos");
         }
     }
     
@@ -277,7 +278,7 @@ public class Controlador {
         if((validarDNI(usuario) == true) && (validarDNI(MaterialBibliografico) == true)){
             conexionPrestamo.modificarPrestamo(id, usuario , MaterialBibliografico);
         }else{
-            System.out.println("Error al Modificar Préstamo , campos inválidos");
+            JOptionPane.showMessageDialog(null,"Error al Modificar Préstamo , campos inválidos");
         }
     }
     

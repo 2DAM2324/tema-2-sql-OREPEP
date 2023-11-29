@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,7 +38,8 @@ public class ConexionBibliotecaria extends Conexion {
             statement.close();
             
         } catch (SQLException e) {
-            System.err.println("Error al obtener Bibliotecarias: " + e.getMessage());
+            
+            JOptionPane.showMessageDialog(null, "Error al obtener Bibliotecarias: " + e.getMessage());
         }
 
         return bibliotecarias;
@@ -67,7 +69,7 @@ public class ConexionBibliotecaria extends Conexion {
             statement.close();
 
         } catch (SQLException e) {
-            System.err.println("Error al obtener Bibliotecaria por Dni: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al obtener Bibliotecaria por Dni: " + e.getMessage());
         }
 
         return bibliotecaria;
@@ -87,12 +89,12 @@ public class ConexionBibliotecaria extends Conexion {
             // Ejecuta la eliminación
             statement.executeUpdate();
 
-            System.out.println("Bibliotecaria eliminada correctamente." + Dni);
+            JOptionPane.showMessageDialog(null, "Bibliotecaria eliminada correctamente." + Dni);
 
             // Cierra los recursos
             statement.close();
         } catch (SQLException e) {
-            System.err.println("Error al eliminar Provedor: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al eliminar Provedor: " + e.getMessage());
         }
     }
     public void insertarBibliotecaria(Bibliotecaria bibliotecaria) {
@@ -108,10 +110,10 @@ public class ConexionBibliotecaria extends Conexion {
             // Ejecuta la inserción
             statement.executeUpdate();
 
-            System.out.println("Bibliotecaria insertada correctamente.");
+            JOptionPane.showMessageDialog(null, "Bibliotecaria insertada correctamente.");
 
         } catch (SQLException e) {
-            System.err.println("Error al insertar Bibliotecaria: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al insertar Bibliotecaria: " + e.getMessage());
         }
     }
     
@@ -130,13 +132,13 @@ public class ConexionBibliotecaria extends Conexion {
             int rowsUpdated = statement.executeUpdate();
 
             if (rowsUpdated > 0) {
-                System.out.println("Bibliotecaria modificada correctamente." + Dni);
+                JOptionPane.showMessageDialog(null, "Bibliotecaria modificada correctamente." + Dni);
             } else {
-                System.out.println("No se encontró ningúna Bibliotecaria con el Dni proporcionado.");
+                JOptionPane.showMessageDialog(null, "No se encontró ningúna Bibliotecaria con el Dni proporcionado.");
             }
 
         } catch (SQLException e) {
-            System.err.println("Error al modificar Bibliotecaria: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al modificar Bibliotecaria: " + e.getMessage());
         }
     }
 }

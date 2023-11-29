@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class ConexionRevision extends Conexion {
 
@@ -31,7 +32,7 @@ public class ConexionRevision extends Conexion {
             statement.close();
 
         } catch (SQLException e) {
-            System.err.println("Error al obtener revisiones: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al obtener revisiones: " + e.getMessage());
         }
 
         return revisiones;
@@ -50,12 +51,12 @@ public class ConexionRevision extends Conexion {
             // Ejecuta la eliminación
             statement.executeUpdate();
 
-            System.out.println("Revisión eliminada correctamente. ID: " + id);
+            JOptionPane.showMessageDialog(null, "Revisión eliminada correctamente. ID: " + id);
 
             // Cierra los recursos
             statement.close();
         } catch (SQLException e) {
-            System.err.println("Error al eliminar revisión: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al eliminar revisión: " + e.getMessage());
         }
     }
     
@@ -74,14 +75,13 @@ public class ConexionRevision extends Conexion {
             // Ejecuta la eliminación
             statement.executeUpdate();
 
-            System.out.println("Revisión eliminada correctamente. Bibliotecaria: " + idBibliotecaria +
+            JOptionPane.showMessageDialog(null, "Revisión eliminada correctamente. Bibliotecaria: " + idBibliotecaria +
                     ", Material Bibliográfico: " + idMaterialBibliografico +
                     ", Fecha de Revisión: " + fechaRevision);
-
             // Cierra los recursos
             statement.close();
         } catch (SQLException e) {
-            System.err.println("Error al eliminar revisión: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al eliminar revisión: " + e.getMessage());
         }
     }
 
@@ -100,11 +100,9 @@ public class ConexionRevision extends Conexion {
 
             // Ejecuta la inserción
             statement.executeUpdate();
-
-            System.out.println("Revisión insertada correctamente.");
-
+            JOptionPane.showMessageDialog(null, "Revisión insertada correctamente.");
         } catch (SQLException e) {
-            System.err.println("Error al insertar revisión: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al insertar revisión: " + e.getMessage());
         }
     }
 
@@ -124,16 +122,16 @@ public class ConexionRevision extends Conexion {
             int rowsUpdated = statement.executeUpdate();
 
             if (rowsUpdated > 0) {
-                System.out.println("Revisión modificada correctamente. ID: " + id);
+                JOptionPane.showMessageDialog(null, "Revisión modificada correctamente. ID: " + id);
             } else {
-                System.out.println("No se encontró ninguna revisión con el ID proporcionado.");
+                JOptionPane.showMessageDialog(null, "No se encontró ninguna revisión con el ID proporcionado.");
             }
 
             // Cierra los recursos
             statement.close();
 
         } catch (SQLException e) {
-            System.err.println("Error al modificar revisión: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al modificar revisión: " + e.getMessage());
         }
     }
     
@@ -163,7 +161,7 @@ public class ConexionRevision extends Conexion {
             statement.close();
 
         } catch (SQLException e) {
-            System.err.println("Error al obtener revisión por ID: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al obtener revisión por ID: " + e.getMessage());
         }
 
         return revision;

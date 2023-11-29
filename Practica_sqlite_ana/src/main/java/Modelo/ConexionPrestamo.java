@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class ConexionPrestamo extends Conexion {
 
@@ -32,7 +33,7 @@ public class ConexionPrestamo extends Conexion {
             statement.close();
 
         } catch (SQLException e) {
-            System.err.println("Error al obtener préstamos: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al obtener préstamos: " + e.getMessage());
         }
 
         return prestamos;
@@ -51,12 +52,12 @@ public class ConexionPrestamo extends Conexion {
             // Ejecuta la eliminación
             statement.executeUpdate();
 
-            System.out.println("Préstamo eliminado correctamente. ID: " + id);
+            JOptionPane.showMessageDialog(null, "Préstamo eliminado correctamente. ID: " + id);
 
             // Cierra los recursos
             statement.close();
         } catch (SQLException e) {
-            System.err.println("Error al eliminar préstamo: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al eliminar préstamo: " + e.getMessage());
         }
     }
 
@@ -76,10 +77,10 @@ public class ConexionPrestamo extends Conexion {
             // Ejecuta la inserción
             statement.executeUpdate();
 
-            System.out.println("Préstamo insertado correctamente.");
+            JOptionPane.showMessageDialog(null, "Préstamo insertado correctamente.");
 
         } catch (SQLException e) {
-            System.err.println("Error al insertar préstamo: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al insertar préstamo: " + e.getMessage());
         }
     }
 
@@ -110,7 +111,7 @@ public class ConexionPrestamo extends Conexion {
             statement.close();
 
         } catch (SQLException e) {
-            System.err.println("Error al obtener préstamo por ID: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al obtener préstamo por ID: " + e.getMessage());
         }
 
         return prestamo;
@@ -132,16 +133,16 @@ public class ConexionPrestamo extends Conexion {
             int rowsUpdated = statement.executeUpdate();
 
             if (rowsUpdated > 0) {
-                System.out.println("Préstamo modificado correctamente. ID: " + id);
+                JOptionPane.showMessageDialog(null, "Préstamo modificado correctamente. ID: " + id);
             } else {
-                System.out.println("No se encontró ningún préstamo con el ID proporcionado.");
+                JOptionPane.showMessageDialog(null, "No se encontró ningún préstamo con el ID proporcionado.");
             }
 
             // Cierra los recursos
             statement.close();
 
         } catch (SQLException e) {
-            System.err.println("Error al modificar préstamo: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al modificar préstamo: " + e.getMessage());
         }
     }
 }

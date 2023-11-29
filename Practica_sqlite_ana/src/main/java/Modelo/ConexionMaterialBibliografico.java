@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,7 +40,7 @@ public class ConexionMaterialBibliografico extends Conexion{
             statement.close();
 
         } catch (SQLException e) {
-            System.err.println("Error al obtener libros: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al obtener libros: " + e.getMessage());
         }
 
         return libros;
@@ -69,7 +70,7 @@ public class ConexionMaterialBibliografico extends Conexion{
             statement.close();
 
         } catch (SQLException e) {
-            System.err.println("Error al obtener tesis: " + e.getMessage());
+            JOptionPane.showMessageDialog(null,"Error al obtener tesis: " + e.getMessage());
         }
 
         return tesisList;
@@ -89,21 +90,21 @@ public class ConexionMaterialBibliografico extends Conexion{
             // Confirma la transacción
             connection.commit();
 
-            System.out.println("Libro eliminado correctamente: " + isbn);
+            JOptionPane.showMessageDialog(null,"Libro eliminado correctamente: " + isbn);
         } catch (SQLException e) {
             // Si hay un error, realiza un rollback
             try {
                 connection.rollback();
-                System.err.println("Error al eliminar libro: " + e.getMessage());
+                JOptionPane.showMessageDialog(null,"Error al eliminar libro: " + e.getMessage());
             } catch (SQLException rollbackException) {
-                System.err.println("Error al realizar rollback: " + rollbackException.getMessage());
+                JOptionPane.showMessageDialog(null,"Error al realizar rollback: " + rollbackException.getMessage());
             }
         } finally {
             // Restaura el modo de autocommit
             try {
                 connection.setAutoCommit(true);
             } catch (SQLException autoCommitException) {
-                System.err.println("Error al restaurar el modo de autocommit: " + autoCommitException.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al restaurar el modo de autocommit: " + autoCommitException.getMessage());
             }
         }
     }
@@ -122,21 +123,21 @@ public class ConexionMaterialBibliografico extends Conexion{
             // Confirma la transacción
             connection.commit();
 
-            System.out.println("Tesis eliminada correctamente: " + doi);
+            JOptionPane.showMessageDialog(null, "Tesis eliminada correctamente: " + doi);
         } catch (SQLException e) {
             // Si hay un error, realiza un rollback
             try {
                 connection.rollback();
-                System.err.println("Error al eliminar tesis: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al eliminar tesis: " + e.getMessage());
             } catch (SQLException rollbackException) {
-                System.err.println("Error al realizar rollback: " + rollbackException.getMessage());
+                JOptionPane.showMessageDialog(null,"Error al realizar rollback: " + rollbackException.getMessage());
             }
         } finally {
             // Restaura el modo de autocommit
             try {
                 connection.setAutoCommit(true);
             } catch (SQLException autoCommitException) {
-                System.err.println("Error al restaurar el modo de autocommit: " + autoCommitException.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al restaurar el modo de autocommit: " + autoCommitException.getMessage());
             }
         }
     }
@@ -181,21 +182,21 @@ public class ConexionMaterialBibliografico extends Conexion{
             // Confirma la transacción
             connection.commit();
 
-            System.out.println("Libro insertado correctamente.");
+            JOptionPane.showMessageDialog(null, "Libro insertado correctamente.");
         } catch (SQLException e) {
             // Si hay un error, realiza un rollback
             try {
                 connection.rollback();
-                System.err.println("Error al insertar libro: " + e.getMessage());
+                JOptionPane.showMessageDialog(null,"Error al insertar libro: " + e.getMessage());
             } catch (SQLException rollbackException) {
-                System.err.println("Error al realizar rollback: " + rollbackException.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al realizar rollback: " + rollbackException.getMessage());
             }
         } finally {
             // Restaura el modo de autocommit
             try {
                 connection.setAutoCommit(true);
             } catch (SQLException autoCommitException) {
-                System.err.println("Error al restaurar el modo de autocommit: " + autoCommitException.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al restaurar el modo de autocommit: " + autoCommitException.getMessage());
             }
         }
     }
@@ -216,21 +217,21 @@ public class ConexionMaterialBibliografico extends Conexion{
             // Confirma la transacción
             connection.commit();
 
-            System.out.println("Tesis insertada correctamente.");
+            JOptionPane.showMessageDialog(null, "Tesis insertada correctamente.");
         } catch (SQLException e) {
             // Si hay un error, realiza un rollback
             try {
                 connection.rollback();
-                System.err.println("Error al insertar tesis: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al insertar tesis: " + e.getMessage());
             } catch (SQLException rollbackException) {
-                System.err.println("Error al realizar rollback: " + rollbackException.getMessage());
+                JOptionPane.showMessageDialog(null,"Error al realizar rollback: " + rollbackException.getMessage());
             }
         } finally {
             // Restaura el modo de autocommit
             try {
                 connection.setAutoCommit(true);
             } catch (SQLException autoCommitException) {
-                System.err.println("Error al restaurar el modo de autocommit: " + autoCommitException.getMessage());
+                JOptionPane.showMessageDialog(null,"Error al restaurar el modo de autocommit: " + autoCommitException.getMessage());
             }
         }
     }
@@ -291,21 +292,21 @@ public class ConexionMaterialBibliografico extends Conexion{
             // Confirma la transacción
             connection.commit();
 
-            System.out.println("Libro modificado correctamente: " + isbn);
+            JOptionPane.showMessageDialog(null, "Libro modificado correctamente: " + isbn);
         } catch (SQLException e) {
             // Si hay un error, realiza un rollback
             try {
                 connection.rollback();
-                System.err.println("Error al modificar libro: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al modificar libro: " + e.getMessage());
             } catch (SQLException rollbackException) {
-                System.err.println("Error al realizar rollback: " + rollbackException.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al realizar rollback: " + rollbackException.getMessage());
             }
         } finally {
             // Restaura el modo de autocommit
             try {
                 connection.setAutoCommit(true);
             } catch (SQLException autoCommitException) {
-                System.err.println("Error al restaurar el modo de autocommit: " + autoCommitException.getMessage());
+                JOptionPane.showMessageDialog(null,"Error al restaurar el modo de autocommit: " + autoCommitException.getMessage());
             }
         }
     }
@@ -324,21 +325,21 @@ public class ConexionMaterialBibliografico extends Conexion{
             // Confirma la transacción
             connection.commit();
 
-            System.out.println("Tesis modificada correctamente: " + doi);
+            JOptionPane.showMessageDialog(null, "Tesis modificada correctamente: " + doi);
         } catch (SQLException e) {
             // Si hay un error, realiza un rollback
             try {
                 connection.rollback();
-                System.err.println("Error al modificar tesis: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al modificar tesis: " + e.getMessage());
             } catch (SQLException rollbackException) {
-                System.err.println("Error al realizar rollback: " + rollbackException.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al realizar rollback: " + rollbackException.getMessage());
             }
         } finally {
             // Restaura el modo de autocommit
             try {
                 connection.setAutoCommit(true);
             } catch (SQLException autoCommitException) {
-                System.err.println("Error al restaurar el modo de autocommit: " + autoCommitException.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al restaurar el modo de autocommit: " + autoCommitException.getMessage());
             }
         }
     }
@@ -397,7 +398,7 @@ public class ConexionMaterialBibliografico extends Conexion{
             resultSet.close();
             statement.close();
         } catch (SQLException e) {
-            System.err.println("Error al obtener libro por ISBN: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al obtener libro por ISBN: " + e.getMessage());
         }
 
         return libro;
@@ -427,7 +428,7 @@ public class ConexionMaterialBibliografico extends Conexion{
             resultSet.close();
             statement.close();
         } catch (SQLException e) {
-            System.err.println("Error al obtener tesis por DOI: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al obtener tesis por DOI: " + e.getMessage());
         }
 
         return tesis;

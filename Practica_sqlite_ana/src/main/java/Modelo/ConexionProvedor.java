@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,7 +38,7 @@ public class ConexionProvedor extends Conexion{
             statement.close();
             
         } catch (SQLException e) {
-            System.err.println("Error al obtener provedores: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al obtener provedores: " + e.getMessage());
         }
 
         return provedores;
@@ -67,7 +68,7 @@ public class ConexionProvedor extends Conexion{
             statement.close();
 
         } catch (SQLException e) {
-            System.err.println("Error al obtener provedor por id: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al obtener provedor por id: " + e.getMessage());
         }
 
         return provedor;
@@ -87,12 +88,12 @@ public class ConexionProvedor extends Conexion{
             // Ejecuta la eliminación
             statement.executeUpdate();
 
-            System.out.println("Provedor eliminado correctamente." + Id);
+            JOptionPane.showMessageDialog(null, "Provedor eliminado correctamente." + Id);
 
             // Cierra los recursos
             statement.close();
         } catch (SQLException e) {
-            System.err.println("Error al eliminar Provedor: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al eliminar Provedor: " + e.getMessage());
         }
     }
     public void insertarProvedor(Provedores provedor) {
@@ -108,10 +109,10 @@ public class ConexionProvedor extends Conexion{
             // Ejecuta la inserción
             statement.executeUpdate();
 
-            System.out.println("Provedor insertado correctamente.");
+            JOptionPane.showMessageDialog(null,"Provedor insertado correctamente.");
 
         } catch (SQLException e) {
-            System.err.println("Error al insertar Provedor: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al insertar Provedor: " + e.getMessage());
         }
     }
     
@@ -130,13 +131,13 @@ public class ConexionProvedor extends Conexion{
             int rowsUpdated = statement.executeUpdate();
 
             if (rowsUpdated > 0) {
-                System.out.println("Provedor modificado correctamente." + id2);
+                JOptionPane.showMessageDialog(null, "Provedor modificado correctamente." + id2);
             } else {
-                System.out.println("No se encontró ningún Provedor con el Id proporcionado.");
+                JOptionPane.showMessageDialog(null, "No se encontró ningún Provedor con el Id proporcionado.");
             }
 
         } catch (SQLException e) {
-            System.err.println("Error al modificar Provedor: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al modificar Provedor: " + e.getMessage());
         }
     }
 }
