@@ -5,6 +5,7 @@
 package Modelo;
 
 import Controlador.Controlador;
+import java.util.ArrayList;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeAll;
@@ -25,15 +26,24 @@ public class ProvedoresTest {
     public static void PrepararBaseDeDatosProvedor(){
         controlador = new Controlador();
         
-        String IdProvedor = "87320102P";
+        String IdProvedor = "74648043W";
         
         //crear Provedor para las pruebas
         controlador.CrearProvedor(IdProvedor);
+        String IdProvedor2 = "76592763A";
+        
+        //crear Provedor para las pruebas
+        controlador.CrearProvedor(IdProvedor2);
+    }
+    
+    @Test
+    public void LeerProvedores(){
+        ArrayList<Provedores> lista = controlador.GetProvedores();
     }
     
     @Test
     public void testCrearProvedor(){
-        String IdProvedor = "00000000P";
+        String IdProvedor = "75931747F";
         
         //crear Provedor para las pruebas
         controlador.CrearProvedor(IdProvedor);
@@ -41,28 +51,27 @@ public class ProvedoresTest {
     
     @Test
     public void testEliminarProvedor(){
-        String IdProvedor = "87320102P";
-        // Verifica que el usuario existe antes de eliminarlo
+        String IdProvedor = "74648043W";
+        
         assertTrue(controlador.GetProvedores().stream().anyMatch(u -> u.getCodProvedor().equals(IdProvedor)));
 
-        // Elimina el usuario
         controlador.EliminarProvedorPorId(IdProvedor);
 
-        // Verifica que el usuario fue eliminado
         assertTrue(controlador.GetProvedores().stream().noneMatch(u -> u.getCodProvedor().equals(IdProvedor)));
     }
     
     @Test 
     public void ModificarProvedor(){
-        String IdProvedor = "13425894P";
-        String IdP = "00000000P";
+        String IdProvedor = "78265971F";
+        String IdP = "76592763A";
         
         controlador.ModificarProvedor(IdP, IdProvedor);
     }
     
     @AfterAll
     public static void LimpiarBAseDatosProvedor(){
-        controlador.EliminarProvedorPorId("13425894P");
+        controlador.EliminarProvedorPorId("78265971F");
+        controlador.EliminarProvedorPorId("75931747F");
     }
     
 }

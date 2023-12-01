@@ -5,9 +5,8 @@
 package Modelo;
 
 import Controlador.Controlador;
-import org.junit.jupiter.api.AfterEach;
+import java.util.ArrayList;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,15 +26,20 @@ public class BibliotecariaTest {
     public static void PrepararBaseDeDatosBibliotecaria(){
         controlador = new Controlador();
         
-        String b = "87320102P";
+        String b = "74648043W";
         
         //crear bibliotecaria para las pruebas
         controlador.CrearBibliotecaria(b);
     }
     
     @Test
+    public void LeerBibliotecaria(){
+        ArrayList<Bibliotecaria> lista = controlador.GetBibliotecaria();
+    }
+    
+    @Test
     public void testCrearProvedor(){
-        String b = "00000000P";
+        String b = "75931747F";
         
         //crear bibliotecaria para las pruebas
         controlador.CrearBibliotecaria(b);
@@ -43,7 +47,7 @@ public class BibliotecariaTest {
     
     @Test
     public void testEliminarBibliotecaria(){
-        String bibliotecaria = "87320102P";
+        String bibliotecaria = "74648043W";
         // Verifica que el usuario existe antes de eliminarlo
         assertTrue(controlador.GetBibliotecaria().stream().anyMatch(u -> u.getDni().equals(bibliotecaria)));
 
@@ -56,15 +60,15 @@ public class BibliotecariaTest {
     
     @Test 
     public void ModificarBibliotecaria(){
-        String dniBibliotecaria = "13425894P";
-        String Dnib = "00000000P";
+        String dniBibliotecaria = "78265971F";
+        String Dnib = "75931747F";
         
         controlador.ModificarBibliotecaria(Dnib, dniBibliotecaria);
     }
     
     @AfterAll
     public static void LimpiarBAseDatosdniBibliotecaria(){
-        controlador.EliminarBibliotecariaPorDni("13425894P");
+        controlador.EliminarBibliotecariaPorDni("78265971F");
     }
     
 }

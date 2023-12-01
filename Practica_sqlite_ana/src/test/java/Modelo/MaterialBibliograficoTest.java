@@ -5,12 +5,10 @@
 package Modelo;
 
 import Controlador.Controlador;
-import org.junit.jupiter.api.AfterEach;
+import java.util.ArrayList;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
@@ -32,10 +30,16 @@ public class MaterialBibliograficoTest {
         String titulo = "Adrian el furioso";
         String autor = "Adrian";
         
-        String IdProvedor = "87320102P";
+        String IdProvedor = "75931747F";
         controlador.CrearProvedor(IdProvedor);
         controlador.CrearLibro(isbn, autor, titulo, IdProvedor);
         controlador.CrearTesis(Doi, autor, titulo, IdProvedor);
+    }
+    
+    @Test
+    public void LeerMaterialBibliografico(){
+        ArrayList<Libro> libros = controlador.GetLibros();
+        ArrayList<Tesis> Tesis = controlador.GetTesis();
     }
     
     @Test 
@@ -43,7 +47,7 @@ public class MaterialBibliograficoTest {
         String isbn = "13005094q";
         String titulo = "Adrian el furioso";
         String autor = "Adrian";
-        String IdProvedor = "87320102P";
+        String IdProvedor = "75931747F";
         controlador.CrearLibro(isbn, autor, titulo, IdProvedor);
     }
     
@@ -57,7 +61,7 @@ public class MaterialBibliograficoTest {
         String isbn = "13425094q";
         String titulo = "Adrian el furioso";
         String autor = "Yo";
-        String IdProvedor = "87320102P";
+        String IdProvedor = "75931747F";
         controlador.ModificarLibro(isbn, autor, titulo, IdProvedor);
     }
     
@@ -66,7 +70,7 @@ public class MaterialBibliograficoTest {
         String doi = "13005094w";
         String titulo = "Adrian el furioso";
         String autor = "Adrian";
-        String IdProvedor = "87320102P";
+        String IdProvedor = "75931747F";
         
         controlador.CrearTesis(doi, autor, titulo, IdProvedor);
     }
@@ -82,7 +86,7 @@ public class MaterialBibliograficoTest {
         String doi = "25308501A";
         String titulo = "Adrian el furioso";
         String autor = "Yo";
-        String IdProvedor = "87320102P";
+        String IdProvedor = "75931747F";
         controlador.ModificarTesis(doi, autor, titulo, IdProvedor);
     }
     
@@ -90,8 +94,8 @@ public class MaterialBibliograficoTest {
     public static void LimpiarBaseDatosMaterialBibliografico() {
         controlador.EliminarTesisPorDoi("13005094w");
         controlador.EliminarLibroPorIsbn("13005094q");
-        controlador.EliminarProvedorPorId("87320102P");
+        controlador.EliminarProvedorPorId("75931747F");
     }
-    
+   
     
 }

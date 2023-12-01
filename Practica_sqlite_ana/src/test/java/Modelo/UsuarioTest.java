@@ -1,6 +1,7 @@
 package Modelo;
 
 import Controlador.Controlador;
+import java.util.ArrayList;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,7 @@ public class UsuarioTest {
         controlador = new Controlador();
 
         // Datos de ejemplo para el usuario
-        String dniCliente = "25378501A";
+        String dniCliente = "75931747F";
         String nombreCliente = "John Doe";
         String telefonoCliente = "123456789";
         String edadCliente = "25";
@@ -23,11 +24,16 @@ public class UsuarioTest {
         // Crea un usuario para las pruebas
         controlador.Crearcliente(dniCliente, nombreCliente, telefonoCliente, edadCliente);
     }
+    
+    @Test 
+    public void LeerUsuarios(){
+        ArrayList<Usuario> lista = controlador.GetUsuarios();
+    }
 
     @Test
     public void testCrearUsuario() {
         // Datos de ejemplo para el usuario
-        String dniCliente = "13425894P";
+        String dniCliente = "74648043W";
         String nombreCliente = "Jane Doe";
         String telefonoCliente = "987654321";
         String edadCliente = "30";
@@ -40,7 +46,7 @@ public class UsuarioTest {
     @Test
     public void testEliminarUsuario() {
         // Datos de ejemplo para el usuario
-        String dniCliente = "25378501A";
+        String dniCliente = "75931747F";
 
         // Verifica que el usuario existe antes de eliminarlo
         assertTrue(controlador.GetUsuarios().stream().anyMatch(u -> u.getDni().equals(dniCliente)));
@@ -54,7 +60,7 @@ public class UsuarioTest {
     
     @Test
     public void ModificarUsuario(){
-        String dniCliente = "13425894P";
+        String dniCliente = "74648043W";
         String nombreCliente = "Jane ÑOp";
         String telefonoCliente = "007654321";
         String edadCliente = "20";
@@ -65,6 +71,6 @@ public class UsuarioTest {
     
     @AfterAll
     public static void LimpiarBaseDatos(){
-        controlador.EliminarUsuarioPorId("13425894P");
+        controlador.EliminarUsuarioPorId("74648043W");
     }
 }

@@ -182,7 +182,7 @@ public class Controlador {
     public void CrearLibro(String isbn , String autor , String nombre , String provedor){
         Libro libro = new Libro(isbn, autor, nombre, provedor);
         
-        if((validarDNI(isbn) == true) && (validarNombre(nombre) == true) && (validarNombre(autor) == true) && (validarDNI(provedor) == true) ){
+        if((validarIsbn(isbn) == true) && (validarNombre(nombre) == true) && (validarNombre(autor) == true) && (validarDNI(provedor) == true) ){
             conexionMaterialBibliografico.insertarLibro(libro);
         }else{
             JOptionPane.showMessageDialog(null, "Error al crear Libro, campos inválidos");
@@ -192,7 +192,7 @@ public class Controlador {
     public void CrearTesis(String doi , String autor , String nombre , String provedor){
         Tesis tesis = new Tesis(doi, autor, nombre, provedor);
         
-        if((validarDNI(doi) == true) && (validarNombre(nombre) == true) && (validarNombre(autor) == true) && (validarDNI(provedor) == true) ){
+        if((validarIsbn(doi) == true) && (validarNombre(nombre) == true) && (validarNombre(autor) == true) && (validarDNI(provedor) == true) ){
             conexionMaterialBibliografico.insertarTesis(tesis);
         }else{
             JOptionPane.showMessageDialog(null, "Error al crear tesiss, campos inválidos");
@@ -202,7 +202,7 @@ public class Controlador {
     public void CrearRevision(String Bibliotecaria , String MaterialBibliografico){
         RevisarMaterial revisarMaterial = new RevisarMaterial(Bibliotecaria, MaterialBibliografico);
         
-        if((validarDNI(Bibliotecaria) == true) && (validarDNI(MaterialBibliografico) == true)){
+        if((validarDNI(Bibliotecaria) == true) && (validarIsbn(MaterialBibliografico) == true)){
             conexionRevision.insertarRevision(revisarMaterial);
         }else{
             JOptionPane.showMessageDialog(null, "Error al crear Revisión , campos inválidos");
@@ -212,7 +212,7 @@ public class Controlador {
     public void CrearPrestamo(String usuario , String MaterialBibliografico){
         Prestamo prestamo = new Prestamo(usuario, MaterialBibliografico);
         
-        if((validarDNI(usuario) == true) && (validarDNI(MaterialBibliografico) == true)){
+        if((validarDNI(usuario) == true) && (validarIsbn(MaterialBibliografico) == true)){
             conexionPrestamo.insertarPrestamo(prestamo);
         }else{
             JOptionPane.showMessageDialog(null, "Error al crear Prestamo , campos inválidos");
@@ -251,7 +251,7 @@ public class Controlador {
     
     public void ModificarLibro(String isbn , String autor , String nombre , String provedor ){
         
-        if((validarDNI(isbn) == true) && (validarNombre(nombre) == true) && (validarNombre(autor) == true) && (validarDNI(provedor) == true) ){
+        if((validarIsbn(isbn) == true) && (validarNombre(nombre) == true) && (validarNombre(autor) == true) && (validarDNI(provedor) == true) ){
             conexionMaterialBibliografico.modificarLibro(isbn,autor, nombre ,provedor);
         }else{
             JOptionPane.showMessageDialog(null, "Error al Modificar Libro, campos inválidos");
@@ -259,7 +259,7 @@ public class Controlador {
     }
     
     public void ModificarTesis(String doi , String autor , String nombre , String provedor){
-        if((validarDNI(doi) == true) && (validarNombre(nombre) == true) && (validarNombre(autor) == true) && (validarDNI(provedor) == true) ){
+        if((validarIsbn(doi) == true) && (validarNombre(nombre) == true) && (validarNombre(autor) == true) && (validarDNI(provedor) == true) ){
             conexionMaterialBibliografico.modificarTesis(doi,autor, nombre ,provedor);
         }else{
             JOptionPane.showMessageDialog(null, "Error al Modificar tesis, campos inválidos");
@@ -267,7 +267,7 @@ public class Controlador {
     }
     
     public void ModificarRevision(int id , String Bibliotecaria , String MaterialBibliografico){
-        if((validarDNI(Bibliotecaria) == true) && (validarDNI(MaterialBibliografico) == true)){
+        if((validarDNI(Bibliotecaria) == true) && (validarIsbn(MaterialBibliografico) == true)){
             conexionRevision.modificarRevision(id, Bibliotecaria, MaterialBibliografico);
         }else{
             JOptionPane.showMessageDialog(null, "Error al Modificar Revisión , campos inválidos");
@@ -275,7 +275,7 @@ public class Controlador {
     }
     
     public void ModificarPrestamo(int id , String usuario , String MaterialBibliografico){
-        if((validarDNI(usuario) == true) && (validarDNI(MaterialBibliografico) == true)){
+        if((validarDNI(usuario) == true) && (validarIsbn(MaterialBibliografico) == true)){
             conexionPrestamo.modificarPrestamo(id, usuario , MaterialBibliografico);
         }else{
             JOptionPane.showMessageDialog(null,"Error al Modificar Préstamo , campos inválidos");
@@ -288,10 +288,46 @@ public class Controlador {
                validarTelefono(usuario.getTelefono()) &&
                validarEdad(usuario.getEdad());
     }
-
-    private boolean validarDNI(String dni) {
+    
+    
+    private boolean validarIsbn(String dni) {
         // Verificar que el DNI tiene 8 números seguidos de una letra
         return dni.matches("\\d{8}[a-zA-Z]");
+    }
+    
+     public static boolean validarDNI(String dni) {
+        // Verificar la longitud del DNI
+        if (dni.length() != 9) {
+            return false;
+        }
+
+        // Extraer el número y la letra de control
+        String numeroStr = dni.substring(0, 8);
+        char letraControl = dni.charAt(8);
+
+        try {
+            // Convertir el número a entero
+            int numero = Integer.parseInt(numeroStr);
+
+            // Calcular la letra de control esperada
+            char letraCalculada = calcularLetraControl(numero);
+
+            // Comparar la letra de control esperada con la proporcionada
+            return letraControl == letraCalculada;
+        } catch (NumberFormatException e) {
+            // Error al convertir el número
+            return false;
+        }
+    }
+
+    private static char calcularLetraControl(int numero) {
+        String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+
+        // Calcular el índice de la letra de control
+        int indice = numero % 23;
+
+        // Obtener la letra de control correspondiente
+        return letras.charAt(indice);
     }
 
     private boolean validarNombre(String nombre) {

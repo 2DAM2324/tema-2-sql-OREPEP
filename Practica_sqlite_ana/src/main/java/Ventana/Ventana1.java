@@ -1441,8 +1441,11 @@ public class Ventana1 extends javax.swing.JFrame {
         Texto_titulo_tesis(evt);
         TextAutor(evt);
         jTextField_provedorTesis(evt);
-        controlador.ModificarTesis(DoiAModificar, nombreTesis, autorTesis,provedorTesis);
-        MostrarTesisEnTabla();
+        if((DoiAModificar != null ) && (nombreTesis != null) && (autorTesis != null ) && (provedorTesis != null )){
+            controlador.ModificarTesis(DoiAModificar, nombreTesis, autorTesis,provedorTesis);
+            MostrarTesisEnTabla();
+        }
+        
     }//GEN-LAST:event_GuardarTesis
 
     private void BorrarTesis(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarTesis
@@ -1510,8 +1513,11 @@ public class Ventana1 extends javax.swing.JFrame {
         TextAutorLibro(evt);
         //
         TextoProvedorLibro(evt);
-        controlador.ModificarLibro(IsbnAmodificar, nombreLibro, autorLibro , textoProvedorLibro);
-        MostrarLibrosEnTabla();
+        if((IsbnAmodificar != null ) && (nombreLibro != null) && (autorLibro != null ) && (textoProvedorLibro != null )){
+            controlador.ModificarLibro(IsbnAmodificar, nombreLibro, autorLibro , textoProvedorLibro);
+            MostrarLibrosEnTabla();
+        }
+        
     }//GEN-LAST:event_GuardarLibro
 
     private void TextoProvedorLibro(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextoProvedorLibro
@@ -1585,8 +1591,10 @@ public class Ventana1 extends javax.swing.JFrame {
         TextoNombreCliente(evt);
         TextoEdadPersona(evt);
         TextoTelefonoCliente(evt);
-        controlador.ModificarCliente(dniAModificar, nombreCliente, TelefonoCliente, EdadCliente);
-        MostrarClientesEnTabla();
+        if((dniAModificar != null ) && (nombreCliente != null) && (TelefonoCliente != null ) && (EdadCliente != null )){
+            controlador.ModificarCliente(dniAModificar, nombreCliente, TelefonoCliente, EdadCliente);
+            MostrarClientesEnTabla();
+        }
     }//GEN-LAST:event_GuardarCliente
 
     private void TextoTelefonoCliente(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextoTelefonoCliente
@@ -1710,6 +1718,7 @@ public class Ventana1 extends javax.swing.JFrame {
 
     private void Guardar_provedor_en_tabla(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar_provedor_en_tabla
         TextoProvedor1(evt);
+        if((IdProvedorAModificar != null && Idprovedor1 != null))
         controlador.ModificarProvedor(IdProvedorAModificar  , Idprovedor1);
     }//GEN-LAST:event_Guardar_provedor_en_tabla
 
@@ -1795,6 +1804,7 @@ public class Ventana1 extends javax.swing.JFrame {
 
     private void jButton_guardar_bibliotecariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_guardar_bibliotecariaActionPerformed
         Texto_id_bibliotecaria(evt);
+        if(DniaEliminarBibliotecaria != null && IdBibliotecaria != null)
         controlador.ModificarBibliotecaria(DniaEliminarBibliotecaria  , IdBibliotecaria);
         
     }//GEN-LAST:event_jButton_guardar_bibliotecariaActionPerformed
@@ -1854,9 +1864,13 @@ public class Ventana1 extends javax.swing.JFrame {
     private void jButton_guardar_revisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_guardar_revisionActionPerformed
         Texto_revision_material(evt);
         texto_revision_bibliotecaria(evt);
-        int idRevision = Integer.parseInt(idRevisonAModificar);
-        controlador.ModificarRevision(idRevision, idRevision_bibliotecaria,Idrevision_material);
-        MostrarRevisionEnTabla();
+        
+        if((idRevisonAModificar != null ) && (idRevision_bibliotecaria != null ) && (Idrevision_material != null)){
+            int idRevision = Integer.parseInt(idRevisonAModificar);
+            controlador.ModificarRevision(idRevision, idRevision_bibliotecaria,Idrevision_material);
+            MostrarRevisionEnTabla();
+        }
+        
     }//GEN-LAST:event_jButton_guardar_revisionActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
